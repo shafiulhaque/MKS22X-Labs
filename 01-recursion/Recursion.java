@@ -39,21 +39,19 @@ public class Recursion{
           */
           public static void printNoDoubleLetterWords(int length,String word,char[]letters){
             if (length == 0){
-              boolean joe = true;
-              for (int i = 0; i < word.length()-1; i++){
-                if (word.charAt(i) == word.charAt(i+1)) joe = false;
-              }
-              if (joe) System.out.println(word);
+              System.out.println(word);
             } else {
               for (int i = 0; i < letters.length; i++){
-                printNoDoubleLetterWords(length-1, word+letters[i], letters);
+                if (word.length() == 0 || letters[i] != word.charAt(word.length()-1)){
+                  printNoDoubleLetterWords(length-1, word+letters[i], letters);
+                }
               }
             }
           }
 
          public static void main (String args[]){
-           printAllWords(3);
+           // printAllWords(3);
            char[] joe = {'a','b','c'};
-           printNoDoubleLetterWords(4, joe);
+           printNoDoubleLetterWords(2, joe);
          }
 }
