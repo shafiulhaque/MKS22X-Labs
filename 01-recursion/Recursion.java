@@ -1,4 +1,5 @@
 public class Recursion{
+
   /*Print all words that are made of the letters a-e inclusive.
          *@param length : the length of the words that are to be printed
          */
@@ -49,9 +50,67 @@ public class Recursion{
             }
           }
 
+          /*
+          *@param s any string
+          *@return a string that is the reversed version of s, do NOT use built in methods to do so, use recursion.
+          */
+          public static String reverse(String s){
+            if (s.length() <= 1) return s;
+            return reverse(s.substring(1)) + s.charAt(0);
+          }
+
+          /*
+          *@param length how long the words must be
+          *param word the variable to store the partial solution (should start at "")
+          *@return the number of words that have no adjacent matching letters using the letters a-z.
+          *Repetition allowed except when letters are adjacent.
+          */
+          public static long countNoDoubleLetterWords(int length,String word){
+            //Hint: not a wrapper method, but you must call it starting with "" as your word.
+            int total = 0;
+            if (length == 0){
+              total++;
+            } else {
+              for (char c = 'a'; c <= 'z'; c++){
+                if (word.length() == 0 || c != word.charAt(word.length()-1)){
+                  total += countNoDoubleLetterWords(length-1, word+c);
+                }
+              }
+            }
+            return total;
+          }
+
+          /*
+          *@param n any non-negative value you want to take the sqrt of
+          *@return the approximate sqrt of n within a tolerance of 0.001%
+          */
+          public static double sqrt(double n){
+            if(n == 0) return n;
+            double joe = 1;
+            if(joe*joe*1.0001 != n){
+              joe = (n/joe + joe)/2;
+              sqrt(joe);
+            }
+            return joe;
+            //Hint: This is a wrapper method.
+          }
+
+          /*
+        *@param n any non-negative value
+        *@return the nth term of the fibonacci sequence. 0, 1, 1, 2, 3, 5 etc.
+        */
+        public int fibIter(int n, int f1, int f2){
+          return 0;
+          //DO NOT call fibIter more than once
+        }
+
+
          public static void main (String args[]){
-           // printAllWords(3);
+           printAllWords(3);
            char[] joe = {'a','b','c'};
            printNoDoubleLetterWords(2, joe);
+           System.out.println(reverse("joemama"));
+           System.out.println(countNoDoubleLetterWords(2, ""));
+           System.out.println(sqrt(2));
          }
 }
