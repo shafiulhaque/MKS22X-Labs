@@ -85,14 +85,17 @@ public class Recursion{
           *@return the approximate sqrt of n within a tolerance of 0.001%
           */
           public static double sqrt(double n){
-            if(n == 0) return n;
-            double joe = 1;
-            if(joe*joe*1.0001 != n){
-              joe = (n/joe + joe)/2;
-              sqrt(joe);
-            }
-            return joe;
+            return sqrt(n, 1.0);
             //Hint: This is a wrapper method.
+          }
+
+          public static double sqrt(double n, double guess){
+            if(n == 0) return 0;
+            if(n - guess*guess < 0.000001 && guess*guess < n*1.000000001){
+              return guess;
+            }
+            double no = (n/guess + guess)/2;
+            return sqrt(n, no);
           }
 
           /*
@@ -106,11 +109,14 @@ public class Recursion{
 
 
          public static void main (String args[]){
-           printAllWords(3);
-           char[] joe = {'a','b','c'};
-           printNoDoubleLetterWords(2, joe);
-           System.out.println(reverse("joemama"));
-           System.out.println(countNoDoubleLetterWords(2, ""));
-           System.out.println(sqrt(2));
+           // printAllWords(3);
+           // char[] joe = {'a','b','c'};
+           // printNoDoubleLetterWords(2, joe);
+           // System.out.println(reverse("joemama"));
+           // System.out.println(countNoDoubleLetterWords(2, ""));
+           System.out.println(sqrt(9));
+           for (int i = 0; i < 10; i++){
+             System.out.println(sqrt(i));
+           }
          }
 }
