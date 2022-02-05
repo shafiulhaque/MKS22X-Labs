@@ -139,13 +139,26 @@ public class Recursion{
            System.out.println(countNoDoubleLetterWords(2, ""));
            System.out.println(countNoDoubleLetterWords(3, ""));
            System.out.println("------------------------");
-           
+
+           System.out.println("TEST SQUAREROOT FUNCTION");
            System.out.println(sqrt(9));
            for (int i = 0; i < 10; i++){
              System.out.println(sqrt(i));
            }
+           System.out.println(sqrt(100));
+           System.out.println(sqrt(625));
+           System.out.println(sqrt(3249));
+           System.out.println(sqrt(222));
+           System.out.println("------------------------");
+
+           System.out.println("TEST FIBITER FUNCTION");
+           System.out.println("Regular Fib Sequence");
            for (int i = 0; i < 10; i++){
              System.out.println(fibIter(i, 1, 0));
+           }
+           System.out.println("Modified Fib Sequence");
+           for (int i = 0; i < 10; i++){
+             System.out.println(fibIter(i, 5, 6));
            }
          }
 }
