@@ -105,17 +105,41 @@ public class Recursion{
         public static int fibIter(int n, int f1, int f2){
           if (n==0) return f2;
           if (n==1) return f1;
-          return fibIter(n-1, f1+f2, f1);    
+          return fibIter(n-1, f1+f2, f1);
           //DO NOT call fibIter more than once
         }
 
 
          public static void main (String args[]){
+           System.out.println("TEST PRINTALLWORDS FUNCTION");
+           printAllWords(1);
+           System.out.println("------------------------");
+           printAllWords(2);
+           System.out.println("------------------------");
            printAllWords(3);
+           System.out.println("------------------------");
+
+           System.out.println("TEST PRINTNODOUBLEWORDS FUNCTION");
            char[] joe = {'a','b','c'};
+           printNoDoubleLetterWords(1, joe);
+           System.out.println("------------------------");
            printNoDoubleLetterWords(2, joe);
+           System.out.println("------------------------");
+           printNoDoubleLetterWords(3, joe);
+           System.out.println("------------------------");
+
+           System.out.println("TEST REVERSE FUNCTION");
            System.out.println(reverse("mr. konsantinovich"));
+           System.out.println(reverse("shafiul"));
+           System.out.println(reverse("racecar"));
+           System.out.println("------------------------");
+
+           System.out.println("TEST COUNTNODOUBLEWORDS FUNCTION");
+           System.out.println(countNoDoubleLetterWords(1, ""));
+           System.out.println(countNoDoubleLetterWords(2, ""));
            System.out.println(countNoDoubleLetterWords(3, ""));
+           System.out.println("------------------------");
+           
            System.out.println(sqrt(9));
            for (int i = 0; i < 10; i++){
              System.out.println(sqrt(i));
