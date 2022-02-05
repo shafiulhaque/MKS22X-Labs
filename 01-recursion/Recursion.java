@@ -103,15 +103,9 @@ public class Recursion{
         *@return the nth term of the fibonacci sequence. 0, 1, 1, 2, 3, 5 etc.
         */
         public static int fibIter(int n, int f1, int f2){
-          if (n==0){
-            if (f1 < f2) return f1;
-            return f2;
-          }
-          if (n==1){
-            if (f1 < f2) return f2;
-            return f1;
-          }
-          return 0;
+          if (n==0) return f2;
+          if (n==1) return f1;
+          return fibIter(n-1, f1+f2, f1);    
           //DO NOT call fibIter more than once
         }
 
@@ -121,7 +115,7 @@ public class Recursion{
            char[] joe = {'a','b','c'};
            printNoDoubleLetterWords(2, joe);
            System.out.println(reverse("mr. konsantinovich"));
-           System.out.println(countNoDoubleLetterWords(2, ""));
+           System.out.println(countNoDoubleLetterWords(3, ""));
            System.out.println(sqrt(9));
            for (int i = 0; i < 10; i++){
              System.out.println(sqrt(i));
