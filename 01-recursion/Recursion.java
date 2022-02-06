@@ -91,7 +91,7 @@ public class Recursion{
 
           public static double sqrt(double n, double guess){
             if(n == 0) return 0;
-            if(n - guess*guess < 0.000001 && guess*guess < n*1.000000001){
+            if(n - guess*guess < 0.000001*n && guess*guess < n*1.000000001){
               return guess;
             }
             double no = (n/guess + guess)/2;
@@ -141,7 +141,6 @@ public class Recursion{
            System.out.println("------------------------");
 
            System.out.println("TEST SQUAREROOT FUNCTION");
-           System.out.println(sqrt(9));
            for (int i = 0; i < 10; i++){
              System.out.println(sqrt(i));
            }
@@ -149,6 +148,7 @@ public class Recursion{
            System.out.println(sqrt(625));
            System.out.println(sqrt(3249));
            System.out.println(sqrt(222));
+           System.out.println(sqrt(324924332));
            System.out.println("------------------------");
 
            System.out.println("TEST FIBITER FUNCTION");
