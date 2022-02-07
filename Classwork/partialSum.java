@@ -1,6 +1,5 @@
 public class partialSum{
   public static boolean partialSum(int[] arr, int target){
-          int total = 0;
           return partialSum(arr, target, 0);
         }
 
