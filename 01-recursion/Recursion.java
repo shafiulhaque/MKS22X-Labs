@@ -144,6 +144,7 @@ public class Recursion{
            for (int i = 0; i < 10; i++){
              System.out.println(sqrt(i));
            }
+           System.out.println(sqrt(0.02));
            System.out.println(sqrt(100));
            System.out.println(sqrt(625));
            System.out.println(sqrt(3249));
