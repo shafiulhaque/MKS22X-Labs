@@ -2,7 +2,7 @@ public class toWords{
   public static String toWords(int n){
     String[] ones = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"};
     String[] teens = {"eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty"};
-    String[] tens = {"teen", "twenty", "thirty", "fourty", "fifty", "sixty", "seventy", "eighty", "ninety"};
+    String[] tens = {"teen", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"};
     if(n<=10){
       return ones[n];
     }
@@ -28,9 +28,12 @@ public class toWords{
   }
   public static void main (String args[]){
     int joe = 0;
-    for (int i = 20; i <= 99; i++){
+    for (int i = 0; i <= 99; i++){
+      System.out.println(toWords(i));
+    }
+    for (int i = 1; i <= 1000; i++){
       for(int j = 0; j < toWords(i).length(); j++){
-        if (toWords(i).charAt(j) != ' ' || toWords(i).charAt(j) != '-'){
+        if (toWords(i).charAt(j) != ' ' && toWords(i).charAt(j) != '-'){
           joe++;
         }
       }
