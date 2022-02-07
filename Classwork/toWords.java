@@ -27,9 +27,14 @@ public class toWords{
     return "didn't work";
   }
   public static void main (String args[]){
-    for (int i = 0; i <= 2000; i++){
-      System.out.println(toWords(i));
+    int joe = 0;
+    for (int i = 20; i <= 99; i++){
+      for(int j = 0; j < toWords(i).length(); j++){
+        if (toWords(i).charAt(j) != ' ' || toWords(i).charAt(j) != '-'){
+          joe++;
+        }
+      }
+      System.out.println(joe);
     }
-    System.out.println(toWords(342));
   }
 }
