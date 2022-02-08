@@ -1,20 +1,24 @@
 public class partialSum{
   public static boolean partialSum(int[] arr, int target){
-          return partialSum(arr, target, 0);
+          return partialSum(0, arr, target);
         }
 
-        public static boolean partialSum(int[] arr, int target, int total){
-          if (target == total) return true;
+        public static boolean partialSum(int start, int[] arr, int target){
+          if (target == 0) return true;
+          if (target < 0) return false;
+          boolean joe = false;
+          if (start < arr.length){
           for (int i = 0; i < arr.length; i++){
-            if (total == 0 || arr[i] != total){
-              partialSum(arr, target, total + arr[i]);
-            }
+            joe = joe || partialSum(start+1, arr, target-arr[i]);
+            joe = joe || partialSum(start+1, arr, target);
           }
-          return false;
         }
+          return joe;
+        }
+
   public static void main (String args[]){
       System.out.println("TEST PARTIAL SUM");
       int[] j1 = {2,4,8};
-      System.out.println(partialSum(j1,10));
+      System.out.println(partialSum(j1,7));
   }
 }
