@@ -8,8 +8,8 @@ public class partialSum{
           if (target < 0) return false;
           boolean joe = false;
           if (start < arr.length){
-          for (int i = 0; i < arr.length; i++){
-            joe = joe || partialSum(start+1, arr, target-arr[i]);
+          for (int i = start; i < arr.length; i++){
+            joe = joe || partialSum(start+1, arr, target-arr[start]);
             joe = joe || partialSum(start+1, arr, target);
           }
         }
