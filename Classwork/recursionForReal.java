@@ -54,4 +54,15 @@ public static boolean splitOdd10(int[] arr){
     return joe;
   }
 
+  public static boolean groupNoAdj(int start, int[] arr, int target){
+          if (target == 0) return true;
+          if (target < 0) return false;
+          boolean joe = false;
+          if (start < arr.length){
+            joe = joe || groupNoAdj(start+2, arr, target-arr[start]);
+            joe = joe || groupNoAdj(start+1, arr, target);
+        }
+          return joe;
+        }
+
 }
