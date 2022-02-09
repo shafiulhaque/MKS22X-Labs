@@ -34,4 +34,24 @@ public static boolean splitOdd10(int[] arr){
     return joe;
   }
 
+  public static boolean split53(int[] arr){
+    return split53(arr, 0, 0, 0);
+  }
+  public static boolean split53(int[] arr, int start, int total1, int total2){
+    if (start == arr.length){
+      if (total1 == total2) return true;
+      return false;
+    }
+    boolean joe = false;
+    if (arr[start]%5 == 0){
+      joe = joe || split53(arr, start+1, total1+arr[start], total2);
+    } else if (arr[start]%3 == 0){
+      joe = joe || split53(arr, start+1, total1, total2+arr[start]);
+    } else {
+      joe = joe || split53(arr, start+1, total1+arr[start], total2);
+    joe = joe || split53(arr, start+1, total1, total2+arr[start]);
+    }
+    return joe;
+  }
+
 }
