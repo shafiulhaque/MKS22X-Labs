@@ -20,4 +20,18 @@ public class recursionForReal{
   return joe;
 }
 
+public static boolean splitOdd10(int[] arr){
+    return splitOdd10(arr, 0, 0, 0);
+  }
+  public static boolean splitOdd10(int[] arr, int start, int total1, int total2){
+    if (start == arr.length){
+      if (total1%10 == 0 && total2%2 == 1 || total2%10 == 0 && total1%2 == 1) return true;
+      return false;
+    }
+    boolean joe = false;
+    joe = joe || splitOdd10(arr, start+1, total1, total2+arr[start]);
+    joe = joe || splitOdd10(arr, start+1, total1+arr[start], total2);
+    return joe;
+  }
+
 }
