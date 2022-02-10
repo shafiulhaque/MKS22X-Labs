@@ -1,4 +1,13 @@
 public class recursionForReal{
+  public static boolean groupSum(int start, int[] nums, int target) {
+  if (target == 0) return true;
+          if (target < 0) return false;
+          if (start < nums.length){
+            return groupSum(start+1, nums, target-nums[start]) || groupSum(start+1, nums, target);
+        }
+          return false;
+}
+
   public static boolean groupSum6(int start, int[] nums, int target) {
     if (target == 0 && start == nums.length) return true;
             if (target < 0) return false;
