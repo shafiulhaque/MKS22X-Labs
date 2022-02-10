@@ -65,4 +65,23 @@ public static boolean splitOdd10(int[] arr){
           return joe;
         }
 
+        public static boolean groupSumClump(int start, int[] arr, int target){
+          if (target == 0) return true;
+          if (target < 0) return false;
+          boolean joe = false;
+            if (start < arr.length){
+              int i = start;
+              int sum = 0;
+              while(i < arr.length && arr[start] == arr[i]) {
+                sum += arr[i];
+                i++;
+              }
+              i = i - start;
+                joe = joe || groupSumClump(start+i, arr, target-sum);
+                joe = joe || groupSumClump(start+i, arr, target);
+
+            }
+          return joe;
+        }
+
 }
