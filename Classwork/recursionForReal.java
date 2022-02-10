@@ -8,6 +8,17 @@ public class recursionForReal{
           return false;
 }
 
+public static boolean splitArray(int[] arr){
+    return splitArray(arr, 0, 0, 0);
+  }
+  public static boolean splitArray(int[] arr, int start, int total1, int total2){
+    if (start == arr.length){
+      if (total1 == total2) return true;
+      return false;
+    }
+    return splitArray(arr, start+1, total1, total2+arr[start]) || splitArray(arr, start+1, total1+arr[start], total2);
+  }
+
   public static boolean groupSum6(int start, int[] nums, int target) {
     if (target == 0 && start == nums.length) return true;
             if (target < 0) return false;
