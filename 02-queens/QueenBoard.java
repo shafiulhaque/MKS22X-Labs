@@ -31,7 +31,7 @@ public class QueenBoard{
                 if (board[i][j] >= 0){
                   System.out.print(board[i][j] + " ");
                 } else {
-                  System.out.println("Q ");
+                  System.out.print("Q ");
                 }
               }
               System.out.println();
@@ -47,10 +47,12 @@ public class QueenBoard{
           */
           private boolean addQueen(int r, int c){
             if (board[r][c] == 0){
+              board[r][c] = -1;
+              int co = c+1;
               for (int i = r+1; i < board.length; i++){
-                int co = c+1;
                 board[i][c]++;
                 board[i][co]++;
+                co++;
               }
               return true;
             }
@@ -80,7 +82,13 @@ public class QueenBoard{
           *        returns true when the board is solveable, and leaves the board in a solved state
           *@throws IllegalStateException when the board starts with any non-zero value (e.g. you solved a 2nd time.)
           */
-      //    public boolean solve(){}
+          public boolean solve(){
+            return solve(true, 0, 0);
+          }
+
+          public boolean solve(boolean works, int r, int c){
+            return addQueen(0, 0);
+          }
 
           /**Find all possible solutions to this size board.
           *@return the number of solutions found, and leaves the board filled with only 0's
