@@ -45,18 +45,31 @@ public class QueenBoard{
           *@postcondition the board is only changed when the function returns true
           * in which case the queen is added and all it's threatened positions are incremented
           */
-      //    private boolean addQueen(int r, int c){
-
-      //    }
+          private boolean addQueen(int r, int c){
+            if (board[r][c] == 0){
+              for (int i = r+1; i < board.length; i++){
+                int co = c+1;
+                board[i][c]++;
+                board[i][co]++;
+              }
+              return true;
+            }
+            return false;
+          }
 
           /**Remove the queen that was added to r,c
           *@precondition r and c are valid indices of the board array and there is a queen at position r,c
           *@postcondition the board is modified to remove that queen and all it's
           *threatened positions are decremented
           */
-    //      private void removeQueen(int r, int c){
-
-      //    }
+          private void removeQueen(int r, int c){
+            board[r][c] = 0;
+            for (int i = r+1; i < board.length; i++){
+              int co = c+1;
+              board[i][c]--;
+              board[i][co]--;
+            }
+          }
 
           /**Find the first solution configuration possible for this size board. Start by placing
           *  the 1st queen in the top left corner, and each new queen in the next ROW. When backtracking
