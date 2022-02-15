@@ -61,15 +61,15 @@ public class QueenBoard{
                   co2--;
                 }
               }
-              System.out.println(Text.go(1,1));
-          System.out.println(this);//can change this to your debug print as well
-          Text.wait(150);//change the delay 1000 = 1 second
+          //     System.out.println(Text.go(1,1));
+          // System.out.println(this);//can change this to your debug print as well
+          // Text.wait(150);//change the delay 1000 = 1 second
 
               return true;
             }
-            System.out.println(Text.go(1,1));
-          System.out.println(this);//can change this to your debug print as well
-          Text.wait(150);//change the delay 1000 = 1 second
+          //   System.out.println(Text.go(1,1));
+          // System.out.println(this);//can change this to your debug print as well
+          // Text.wait(150);//change the delay 1000 = 1 second
 
             return false;
           }
@@ -94,9 +94,9 @@ public class QueenBoard{
                 co2--;
               }
             }
-            System.out.println(Text.go(1,1));
-          System.out.println(this);//can change this to your debug print as well
-          Text.wait(1500);//change the delay 1000 = 1 second
+          //   System.out.println(Text.go(1,1));
+          // System.out.println(this);//can change this to your debug print as well
+          // Text.wait(1500);//change the delay 1000 = 1 second
 
 
           }
@@ -111,6 +111,7 @@ public class QueenBoard{
           *@throws IllegalStateException when the board starts with any non-zero value (e.g. you solved a 2nd time.)
           */
           public boolean solve(){
+            if (board[0][0] != 0) throw new IllegalStateException("Board does not start with 0");
             return solve(0);
 
           }
@@ -135,5 +136,25 @@ public class QueenBoard{
           *@return the number of solutions found, and leaves the board filled with only 0's
           *@throws IllegalStateException when the board starts with any non-zero value (e.g. you ran solve() before this method)
           */
-      //    public int countSolutions(){}
+          public int countSolutions(){
+            if (board[0][0] != 0) throw new IllegalStateException("Board does not start with 0");
+            return countSolutions(0);
+          }
+
+          public int countSolutions(int r){
+            int joe = 0;
+            if (r == board.length){
+              joe++;
+            } else {
+              for (int i = 0; i < board[r].length; i++){
+                if (addQueen(r, i)){
+                  if (solve(r+1)){
+                    joe++;
+                  }
+                  removeQueen(r, i);
+                }
+              }
+            }
+            return joe;
+          }
 }

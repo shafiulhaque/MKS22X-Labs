@@ -1,6 +1,6 @@
 public class Tester{
   public static void main (String args[]){
-    QueenBoard joe = new QueenBoard(10);
+    QueenBoard joe = new QueenBoard(8);
     System.out.println(joe);
     System.out.println(Text.CLEAR_SCREEN);
     System.out.println(Text.HIDE_CURSOR);
@@ -8,5 +8,6 @@ public class Tester{
     joe.solve();
     System.out.println(Text.RESET);
     System.out.println(joe);
+    System.out.println(joe.countSolutions());
   }
 }
