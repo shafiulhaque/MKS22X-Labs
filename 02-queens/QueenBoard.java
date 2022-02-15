@@ -29,7 +29,7 @@ public class QueenBoard{
             for (int i = 0; i < board.length; i++){
               for (int j = 0; j < board[i].length; j++){
                 if (board[i][j] >= 0){
-                  System.out.print(board[i][j] + " ");
+                  System.out.print("_ ");
                 } else {
                   System.out.print("Q ");
                 }
@@ -49,13 +49,28 @@ public class QueenBoard{
             if (board[r][c] == 0){
               board[r][c] = -1;
               int co = c+1;
+              int co2 = c-1;
               for (int i = r+1; i < board.length; i++){
                 board[i][c]++;
-                board[i][co]++;
-                co++;
+                if (co < board.length){
+                  board[i][co]++;
+                  co++;
+                }
+                if (co2 >= 0){
+                  board[i][co2]++;
+                  co2--;
+                }
               }
+              System.out.println(Text.go(1,1));
+          System.out.println(this);//can change this to your debug print as well
+          Text.wait(150);//change the delay 1000 = 1 second
+
               return true;
             }
+            System.out.println(Text.go(1,1));
+          System.out.println(this);//can change this to your debug print as well
+          Text.wait(150);//change the delay 1000 = 1 second
+
             return false;
           }
 
@@ -66,11 +81,24 @@ public class QueenBoard{
           */
           private void removeQueen(int r, int c){
             board[r][c] = 0;
+            int co = c+1;
+            int co2 = c-1;
             for (int i = r+1; i < board.length; i++){
-              int co = c+1;
               board[i][c]--;
-              board[i][co]--;
+              if (co < board.length){
+                board[i][co]--;
+                co++;
+              }
+              if (co2 >= 0){
+                board[i][co2]--;
+                co2--;
+              }
             }
+            System.out.println(Text.go(1,1));
+          System.out.println(this);//can change this to your debug print as well
+          Text.wait(1500);//change the delay 1000 = 1 second
+
+
           }
 
           /**Find the first solution configuration possible for this size board. Start by placing
@@ -83,11 +111,24 @@ public class QueenBoard{
           *@throws IllegalStateException when the board starts with any non-zero value (e.g. you solved a 2nd time.)
           */
           public boolean solve(){
-            return solve(true, 0, 0);
+            return solve(0);
+
           }
 
-          public boolean solve(boolean works, int r, int c){
-            return addQueen(0, 0);
+          public boolean solve(int r){
+            if (r == board.length){
+              return true;
+            } else {
+              for (int i = 0; i < board[r].length; i++){
+                if (addQueen(r, i)){
+                  if (solve(r+1)){
+                    return true;
+                  }
+                  removeQueen(r, i);
+                }
+              }
+              return false;
+            }
           }
 
           /**Find all possible solutions to this size board.
