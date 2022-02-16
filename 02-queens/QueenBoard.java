@@ -1,8 +1,21 @@
 public class QueenBoard{
   //fields
-  private int[][]board;
+  private int[][] board;
+  private boolean animated;
+  private int delay;
 
-  // constructor
+  // constructors
+  public QueenBoard(){
+    board = new int[8][8];
+    for (int i = 0; i < 8; i++){
+      for (int j = 0; j < 8; j++){
+        board[i][j] = 0;
+      }
+    }
+    this.delay = 1000;
+    this.animated = false;
+  }
+
   public QueenBoard(int size){
     board = new int[size][size];
     for (int i = 0; i < size; i++){
@@ -10,9 +23,30 @@ public class QueenBoard{
         board[i][j] = 0;
       }
     }
+    this.delay = 1000;
+    this.animated = false;
   }
-//  private boolean addQueen(int r, int c)
-//  private void removeQueen(int r, int c)
+
+  public QueenBoard(int size, int delay){
+    board = new int[size][size];
+    for (int i = 0; i < size; i++){
+      for (int j = 0; j < size; j++){
+        board[i][j] = 0;
+      }
+    }
+    this.delay = delay;
+    this.animated = false;
+  }
+
+ // mutator methods
+ public void setAnimate(boolean newValue){
+   this.animated = newValue;
+ }
+
+ public void setDelay(int newValue){
+   if (newValue < 0) this.delay = 0;
+   this.delay = newValue;
+ }
   /**
           *@return The output string formatted as follows:
           *All numbers that represent queens are replaced with 'Q'
@@ -61,16 +95,18 @@ public class QueenBoard{
                   co2--;
                 }
               }
-          //     System.out.println(Text.go(1,1));
-          // System.out.println(this);//can change this to your debug print as well
-          // Text.wait(150);//change the delay 1000 = 1 second
-
+              if(animated){
+            System.out.println(Text.go(1,1));
+            System.out.println(this);//can modify here
+            Text.wait(delay);
+          }
               return true;
             }
-          //   System.out.println(Text.go(1,1));
-          // System.out.println(this);//can change this to your debug print as well
-          // Text.wait(150);//change the delay 1000 = 1 second
-
+            if(animated){
+              System.out.println(Text.go(1,1));
+              System.out.println(this);//can modify here
+              Text.wait(delay);
+            }
             return false;
           }
 
@@ -94,11 +130,11 @@ public class QueenBoard{
                 co2--;
               }
             }
-          //   System.out.println(Text.go(1,1));
-          // System.out.println(this);//can change this to your debug print as well
-          // Text.wait(1500);//change the delay 1000 = 1 second
-
-
+            if(animated){
+              System.out.println(Text.go(1,1));
+              System.out.println(this);//can modify here
+              Text.wait(delay);
+            }
           }
 
           /**Find the first solution configuration possible for this size board. Start by placing
@@ -153,6 +189,7 @@ public class QueenBoard{
                   }
                   removeQueen(r, i);
                 }
+                removeQueen(0, i);
               }
             }
             return joe;
