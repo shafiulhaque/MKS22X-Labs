@@ -47,6 +47,7 @@ public class QueenBoard{
    if (newValue < 0) this.delay = 0;
    this.delay = newValue;
  }
+
   /**
           *@return The output string formatted as follows:
           *All numbers that represent queens are replaced with 'Q'
@@ -184,12 +185,9 @@ public class QueenBoard{
             } else {
               for (int i = 0; i < board[r].length; i++){
                 if (addQueen(r, i)){
-                  if (solve(r+1)){
-                    joe++;
-                  }
+                  joe += countSolutions(r+1);
                   removeQueen(r, i);
                 }
-                removeQueen(0, i);
               }
             }
             return joe;
