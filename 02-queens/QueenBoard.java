@@ -74,6 +74,29 @@ public class QueenBoard{
             return bd;
           }
 
+          public String notToString(){
+            String bd = "";
+            for (int i = 0; i < board.length; i++){
+              for (int j = 0; j < board[i].length; j++){
+                if (board[i][j] >= 0){
+                  if ((i+j)% 2 == 0){
+                    System.out.print(Text.colorize("  ", Text.BOLD, Text.BLACK, Text.WHITE+Text.BACKGROUND));
+                  } else {
+                    System.out.print(Text.colorize("  ", Text.BOLD, Text.WHITE, Text.BLACK+Text.BACKGROUND));
+                  }
+                } else {
+                  if ((i+j) % 2 == 0){
+                    System.out.print(Text.colorize("Q ", Text.BOLD, Text.BLACK, Text.WHITE+Text.BACKGROUND));
+                  } else {
+                    System.out.print(Text.colorize("Q ", Text.BOLD, Text.WHITE, Text.BLACK+Text.BACKGROUND));
+                  }
+                }
+              }
+              System.out.println();
+            }
+            return bd;
+          }
+
           /**
           *@return true when the queen added correctly, false Otherwise
           *@precondition r and c are valid indices of the board array
@@ -97,15 +120,15 @@ public class QueenBoard{
                 }
               }
               if(animated){
-            System.out.println(Text.go(1,1));
-            System.out.println(this);//can modify here
-            Text.wait(delay);
+                System.out.println(Text.go(1,1));
+                System.out.println(this.notToString());//can modify here
+                Text.wait(delay);
           }
               return true;
             }
             if(animated){
               System.out.println(Text.go(1,1));
-              System.out.println(this);//can modify here
+              System.out.println(this.notToString());//can modify here
               Text.wait(delay);
             }
             return false;
@@ -133,7 +156,7 @@ public class QueenBoard{
             }
             if(animated){
               System.out.println(Text.go(1,1));
-              System.out.println(this);//can modify here
+              System.out.println(this.notToString());//can modify here
               Text.wait(delay);
             }
           }
