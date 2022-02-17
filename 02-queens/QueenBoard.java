@@ -35,7 +35,7 @@ public class QueenBoard{
       }
     }
     this.delay = delay;
-    this.animated = false;
+    this.animated = true;
   }
 
  // mutator methods
