@@ -22,6 +22,9 @@ import java.util.*;
             */
             public Maze(String filename) throws FileNotFoundException{
               //COMPLETE CONSTRUCTOR
+              getVals(filename);
+              findStart();
+              this.animate = false;
             }
 
             private void wait(int millis){
@@ -33,7 +36,7 @@ import java.util.*;
             }
 
             public void setAnimate(boolean b){
-              animate = b;
+              this.animate = b;
             }
 
             public static void clearTerminal(){
@@ -49,7 +52,44 @@ import java.util.*;
             It should look like the text file with some characters replaced.
             */
             public String toString(){
-              return "WRITE THIS METHOD";
+                String mr = "";
+                for (int i = 0; i < maze.length; i++){
+                  for (int j = 0; j < maze[i].length; j++){
+                    System.out.print(maze[i][j]);
+                  }
+                  System.out.println();
+                }
+                return mr;
+            }
+
+            public void getVals(String filename) throws FileNotFoundException{
+              ArrayList<char[]> joe = new ArrayList<char[]>();
+              int counter = 0;
+              File text = new File(filename);
+              Scanner input = new Scanner(text);
+              while (input.hasNextLine()){
+                String line = input.nextLine();
+                char[] bruh = line.toCharArray();
+                joe.add(bruh);
+                counter++;
+              }
+              input.close();
+              this.maze = new char[counter][];
+              for (int i = 0; i < counter; i++){
+                maze[i] = joe.get(i);
+              }
+            }
+
+            public void findStart(){
+              int[] bruh = new int[2];
+              for (int i = 0; i < maze.length; i++){
+                for (int j = 0; j < maze[i].length; j++){
+                  if (maze[i][j] == 'S'){
+                    this.startRow = i;
+                    this.startCol = j;
+                  }
+                }
+              }
             }
 
             /*Wrapper Solve Function returns the helper function
@@ -92,4 +132,3 @@ import java.util.*;
               return -1; //so it compiles
             }
           }
-        
