@@ -92,6 +92,18 @@ import java.util.*;
               }
             }
 
+            public int noQ(){
+              int counter = 0;
+              for (int i = 0; i < maze.length; i++){
+                for (int j = 0; j < maze[i].length; j++){
+                  if (maze[i][j] == '@'){
+                    counter++;
+                  }
+                }
+              }
+              return counter;
+            }
+
             /*Wrapper Solve Function returns the helper function
             Note the helper function has the same name, but different parameters.
             Since the constructor exits when the file is not found or is missing an E or S, we can assume it exists.
@@ -104,6 +116,23 @@ import java.util.*;
               //start solving at the location of the s.
               return solve(startRow,startCol);
 
+            }
+
+            public boolean move(int row, int col, int row2, int col2){
+              if (row < 0 || col < 0) return false;
+              maze[row][col] = '@';
+              maze[row2][col2] = 'S';
+
+              return true;
+            }
+
+            public void moveEnd(int row, int col, int row2, int col2){
+              maze[row][col] = '@';
+              maze[row2][col2] = 'S';
+            }
+
+            public boolean canMove(int row, int col){
+              return maze[row][col] == ' ';
             }
 
             /*
@@ -122,13 +151,34 @@ import java.util.*;
             */
             private int solve(int row, int col){ //you can add more parameters since this is private
               //automatic animation! You are welcome.
-              if(animate){
-                gotoTop();
-                System.out.println(this);
-                wait(50);
-              }
-
               //COMPLETE SOLVE
-              return -1; //so it compiles
+
+              if(maze[row][col] == 'E'){
+                return 0;
+              } else if (maze[row][col] == '@' || maze[row][col] == '#' || maze[row][col] == '.'){
+                return -1;
+              } else {
+                maze[row][col] = '@';
+                if(animate){
+                  gotoTop();
+                  System.out.println(this);
+                  wait(250);
+                }
+                int s = solve(row+1, col);
+                if (s > -1) return s+1;
+                int n = solve(row-1, col);
+                if (n > -1) return n+1;
+                int w = solve(row, col-1);
+                if (w > -1) return w+1;
+                int e = solve(row, col+1);
+                if (e > -1) return e+1;
+                maze[row][col] = '.';
+                if(animate){
+                  gotoTop();
+                  System.out.println(this);
+                  wait(250);
+                }
+                return -1;
+              }
             }
           }
