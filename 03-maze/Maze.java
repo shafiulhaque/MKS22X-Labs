@@ -118,23 +118,6 @@ import java.util.*;
 
             }
 
-            public boolean move(int row, int col, int row2, int col2){
-              if (row < 0 || col < 0) return false;
-              maze[row][col] = '@';
-              maze[row2][col2] = 'S';
-
-              return true;
-            }
-
-            public void moveEnd(int row, int col, int row2, int col2){
-              maze[row][col] = '@';
-              maze[row2][col2] = 'S';
-            }
-
-            public boolean canMove(int row, int col){
-              return maze[row][col] == ' ';
-            }
-
             /*
             Recursive Solve function:
 
