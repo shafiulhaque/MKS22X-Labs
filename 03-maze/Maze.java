@@ -26,6 +26,11 @@ import java.util.*;
               findStart();
               this.animate = false;
             }
+            public Maze(char[][] maze){
+              this.maze = maze;
+              findStart();
+              this.animate = false;
+            }
 
             private void wait(int millis){
               try {
@@ -145,7 +150,7 @@ import java.util.*;
                 if(animate){
                   gotoTop();
                   System.out.println(this);
-                  wait(250);
+                  wait(50);
                 }
                 int s = solve(row+1, col);
                 if (s > -1) return s+1;
@@ -159,7 +164,7 @@ import java.util.*;
                 if(animate){
                   gotoTop();
                   System.out.println(this);
-                  wait(250);
+                  wait(50);
                 }
                 return -1;
               }

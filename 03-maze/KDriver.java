@@ -14,6 +14,9 @@ import java.io.*;
             }
             MazeGenerator.generate(maze,startrow,startcol);
             MazeGenerator.toString(maze);
+            Maze m = new Maze(maze);
+            m.setAnimate(true);
+            System.out.println(m.solve());
             System.out.println("MAZE!");//You need a way to show the maze without the array brackets etc.
 
           }else if(args.length == 1  || args.length == 2){
