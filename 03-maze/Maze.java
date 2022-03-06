@@ -1,5 +1,6 @@
 import java.util.*;
-          import java.io.*;
+import java.io.*;
+
           public class Maze{
             private char[][]maze;
             private boolean animate;//false by default
@@ -20,6 +21,7 @@ import java.util.*;
             Some text editors always include a newline at the end of a file, but that is not always present.
             Make sure your file reading is able to handle this.
             */
+
             public Maze(String filename) throws FileNotFoundException{
               //COMPLETE CONSTRUCTOR
               getVals(filename);
@@ -31,6 +33,7 @@ import java.util.*;
               findStart();
               this.animate = false;
             }
+
 
             private void wait(int millis){
               try {
@@ -52,6 +55,7 @@ import java.util.*;
               //go to top left of screen
               System.out.println("\033[1;1H");
             }
+
 
             /*Return the string that represents the maze.
             It should look like the text file with some characters replaced.
@@ -86,7 +90,6 @@ import java.util.*;
             }
 
             public void findStart(){
-              int[] bruh = new int[2];
               for (int i = 0; i < maze.length; i++){
                 for (int j = 0; j < maze[i].length; j++){
                   if (maze[i][j] == 'S'){
@@ -95,18 +98,6 @@ import java.util.*;
                   }
                 }
               }
-            }
-
-            public int noQ(){
-              int counter = 0;
-              for (int i = 0; i < maze.length; i++){
-                for (int j = 0; j < maze[i].length; j++){
-                  if (maze[i][j] == '@'){
-                    counter++;
-                  }
-                }
-              }
-              return counter;
             }
 
             /*Wrapper Solve Function returns the helper function
