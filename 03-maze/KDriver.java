@@ -1,7 +1,7 @@
 import java.io.*;
   public class KDriver{
       public static void main(String[]args){
-          if(args.length == 4){
+          if(args.length >= 4){
             int rows = Integer.parseInt(args[0]);
             int cols = Integer.parseInt(args[1]);
             int startrow = Integer.parseInt(args[2]);
@@ -15,7 +15,7 @@ import java.io.*;
             MazeGenerator.generate(maze,startrow,startcol);
             MazeGenerator.toString(maze);
             Maze m = new Maze(maze);
-            m.setAnimate(true);
+            if (args.length == 5) m.setAnimate(true);
             System.out.println(m.solve());
             System.out.println("MAZE!");//You need a way to show the maze without the array brackets etc.
 
