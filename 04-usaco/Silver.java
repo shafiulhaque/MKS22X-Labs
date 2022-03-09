@@ -34,10 +34,12 @@ public class Silver {
     int y1 = end[1];
     int x2 = end[2];
     int y2 = end[3];
-    grid[x1-1][y1-1] = 'C';
-    grid[x2-1][y2-1] = 'E';
     toString(grid);
-    return 0;
+    int[][] bruh = toStringChar(grid);
+    toString(bruh);
+    bruh = solver(bruh, time);
+    toString(bruh);
+    return bruh[x2-1][y2-1];
   }
 
   public static void toString(char[][] grid){
@@ -47,48 +49,51 @@ public class Silver {
       }
       System.out.println();
     }
+    System.out.println();
   }
 
-  public static boolean canMove(char[][] grid, int x1, int y1, char joe){
-    if (joe == 'U'){
-      if (x1 > 0 && grid[x1-1][y1] != '*'){
-        grid[x1][y1] = '.';
-        grid[x1-1][y1] = 'C';
-        return true;
+  public static void toString(int[][] grid){
+    for (int i = 0; i < grid.length; i++){
+      for (int j = 0; j < grid[i].length; j++){
+        System.out.print(grid[i][j] + " ");
       }
+      System.out.println();
     }
-    if (joe == 'D'){
-      if (x1 < grid.length && grid[x1+1][y1] != '*'){
-        grid[x1][y1] = '.';
-        grid[x1+1][y1] = 'C';
-        return true;
-      }
-    }
-    if (joe == 'L'){
-      if (y1 > 0 && grid[x1][y1-1] != '*'){
-        grid[x1][y1] = '.';
-        grid[x1][y1-1] = 'C';
-        return true;
-      }
-    }
-    if (joe == 'R'){
-      if (y1 < grid[x1].length && grid[x1][y1+1] != '*'){
-        grid[x1][y1] = '.';
-        grid[x1][y1+2] = 'C';
-        return true;
-      }
-    }
-    return false;
+    System.out.println();
   }
 
-  public static long solver(char[][] joe, int row, int col){
-    int counter = 0;
-    if (joe[row][col] == 'E'){
-      return 1;
-    } else if (joe[row][col] == '*' || joe[row][col] == '-' || joe[row][col] == '.'){
-      return -1;
+  public static int[][] toStringChar(char[][] grid){
+    int[][] joe = new int[grid.length][grid[0].length];
+    for (int i = 0; i < grid.length; i++){
+      for (int j = 0; j < grid[i].length; j++){
+        if (grid[i][j] == '.') joe[i][j] = 0;
+        if (grid[i][j] == '*') joe[i][j] = -1;
+      }
     }
-    return counter;
+    return joe;
+  }
+
+  public static int[][] spread(int[][] grid){
+    int[][] joe = new int[grid.length][grid[0].length];
+    for (int i = 0; i < grid.length; i++){
+      for (int j = 0; j < grid[i].length; j++){
+        if (grid[i][j] > 0){
+          if(i > 0 && grid[i-1][j] != -1) joe[i-1][j] += grid[i][j];
+          if(i < grid.length-1 && grid[i+1][j] != -1) joe[i+1][j] += grid[i][j];
+          if(j > 0 && grid[i][j-1] != -1) joe[i][j-1] += grid[i][j];
+          if(j < grid[i].length-1 && grid[i][j+1] != -1) joe[i][j+1] += grid[i][j];
+        }
+      }
     }
+    return joe;
+  }
+
+  public static int[][] solver(int[][] grid, int time){
+    if (time == 0) return grid;
+    grid = spread(grid);
+    return solver(grid, time-1);
+  }
+
+
 
 }
