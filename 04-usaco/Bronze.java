@@ -53,4 +53,27 @@ public class Bronze{
       System.out.println();
     }
   }
+
+  public static int[][] cowStomp(int row, int col, int sub, int[][] grid){
+    int big = grid[row-1][col-1];
+    for (int i = row-1; i < row+2; i++){
+      for (int j = col-1; j < col+2; j++){
+      if (i < grid.length && j < grid[i].length){
+        if (big < grid[i][j]) big = grid[i][j];
+      }
+    }
+    }
+    System.out.println(big);
+
+    int diff = big - sub;
+
+    for (int i = row-1; i < row+2; i++){
+      for (int j = col-1; j < col+2; j++){
+      if (i < grid.length && j < grid[i].length){
+        if (diff < grid[i][j]) grid[i][j] = diff;
+      }
+    }
+  }
+  return grid;
+  }
 }
