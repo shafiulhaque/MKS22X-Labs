@@ -34,11 +34,12 @@ public class Silver {
     int y1 = end[1];
     int x2 = end[2];
     int y2 = end[3];
-    toString(grid);
+  //  toString(grid);
     int[][] bruh = toStringChar(grid);
-    toString(bruh);
+    bruh[x1-1][y1-1] = 1;
+  //  toString(bruh);
     bruh = solver(bruh, time);
-    toString(bruh);
+  //  toString(bruh);
     return bruh[x2-1][y2-1];
   }
 
@@ -83,6 +84,7 @@ public class Silver {
           if(j > 0 && grid[i][j-1] != -1) joe[i][j-1] += grid[i][j];
           if(j < grid[i].length-1 && grid[i][j+1] != -1) joe[i][j+1] += grid[i][j];
         }
+        if (grid[i][j] < 0) joe[i][j] = grid[i][j];
       }
     }
     return joe;
