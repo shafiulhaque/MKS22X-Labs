@@ -25,6 +25,7 @@ Using our previous knowledge of recursive backtracking and the stuff we learned 
 => would also cut the possibilities that wouldn't work (means we can't move there)
 - once the cow reaches the end point, count that as a solution and stop generating solutions for that specific instance
 => add one to the counter
+- MAKE SURE that you only add when the counter is equal to the T (time) value
 
 4) make a tostring to see how the cow would move throughout the maze
 - adding on to the recursive backtracking solution, place a 'C' that would be a cow in the grid
