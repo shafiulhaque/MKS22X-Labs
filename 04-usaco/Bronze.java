@@ -35,13 +35,13 @@ public class Bronze{
       }
     }
     input.close();
-    toString(grid);
+//    toString(grid);
     for (int i = 0; i < no; i++){
       grid = cowStomp(cmnd[i][0], cmnd[i][1], cmnd[i][2], grid);
-      toString(grid);
+    //  toString(grid);
     }
     elevation(grid, elevation);
-    toString(grid);
+  //  toString(grid);
     return calc(grid);
   }
 
@@ -63,8 +63,7 @@ public class Bronze{
       }
     }
     }
-    System.out.println(big);
-
+//    System.out.println(big);
     int diff = big - sub;
 
     for (int i = row-1; i < row+2; i++){

@@ -21,7 +21,6 @@ public class Silver {
       String line2 = input.nextLine();
       for (int j = 0; j < col; j++){
         grid[i][j] = line2.charAt(j);
-        System.out.println(grid[i][j]);
       }
     }
 
@@ -35,7 +34,28 @@ public class Silver {
     int y1 = end[1];
     int x2 = end[2];
     int y2 = end[3];
+    grid[x1-1][y1-1] = 'C';
+    grid[x2-1][y2-1] = 'E';
+    toString(grid);
 
     return 0;
   }
+  public static void toString(char[][] joe){
+    for (int i = 0; i < joe.length; i++){
+      for (int j = 0; j < joe[i].length; j++){
+        System.out.print(joe[i][j]);
+      }
+      System.out.println();
+    }
+  }
+
+  public static long solver(char[][] joe, int row, int col){
+    int counter = 0;
+    if (joe[row][col] == 'E'){
+      return 1;
+    } else if (joe[row][col] == '*' || joe[row][col] == '-' || joe[row][col] == '.'){
+      return -1;
+    }
+    }
+
 }
