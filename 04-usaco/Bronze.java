@@ -44,4 +44,13 @@ public class Bronze{
     toString(grid);
     return calc(grid);
   }
+
+  public static void toString(int[][] joe){
+    for (int i = 0; i < joe.length; i++){
+      for (int j = 0; j < joe[i].length; j++){
+        System.out.print(joe[i][j] + " ");
+      }
+      System.out.println();
+    }
+  }
 }
