@@ -6,6 +6,9 @@ public class Tester{
     try{
       long ans = Bronze.solve("lake1.input");
       System.out.println(ans);
+      long ans2 = Silver.solve("cowPath1.input");
+      System.out.println(ans2);
+
     }catch(FileNotFoundException e){
                 //error handling code
     }
