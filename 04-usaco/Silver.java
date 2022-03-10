@@ -91,6 +91,7 @@ public class Silver {
   }
 
   public static int[][] solver(int[][] grid, int time){
+//    toString(grid);
     if (time == 0) return grid;
     grid = spread(grid);
     return solver(grid, time-1);
