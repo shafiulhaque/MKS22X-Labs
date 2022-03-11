@@ -4,9 +4,9 @@ import java.io.*;
 public class Tester{
   public static void main(String args[]){
     try{
-      long ans = Bronze.solve("lake1.input");
+      long ans = Bronze.solve(args[0]);
       System.out.println(ans);
-      long ans2 = Silver.solve("cowPath1.input");
+      long ans2 = Silver.solve(args[1]);
       System.out.println(ans2);
 
     }catch(FileNotFoundException e){
