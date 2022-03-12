@@ -2,7 +2,8 @@ import java.util.*;
 import java.io.*;
 
 public class Bronze{
-  public static long solve(String filename) throws FileNotFoundException {
+  public static long solve(String filename){
+    try{
     File text = new File(filename);
     Scanner input = new Scanner(text);
 
@@ -43,6 +44,9 @@ public class Bronze{
     elevation(grid, elevation);
   //  toString(grid);
     return calc(grid);
+  } catch (FileNotFoundException e){
+    return -1;
+  }
   }
 
   public static void toString(int[][] joe){

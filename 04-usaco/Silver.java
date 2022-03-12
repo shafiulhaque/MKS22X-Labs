@@ -2,7 +2,8 @@ import java.util.*;
 import java.io.*;
 
 public class Silver {
-  public static long solve(String filename) throws FileNotFoundException {
+  public static long solve(String filename){
+    try{
     File text = new File(filename);
     Scanner input = new Scanner(text);
 
@@ -40,7 +41,11 @@ public class Silver {
   //  toString(bruh);
     bruh = solver(bruh, time);
   //  toString(bruh);
-    return bruh[x2-1][y2-1];
+  if (bruh[x2-1][y2-1] >= 0) return bruh[x2-1][y2-1];
+  return 0;
+  } catch (FileNotFoundException e){
+    return -1;
+  }
   }
 
   public static void toString(char[][] grid){
