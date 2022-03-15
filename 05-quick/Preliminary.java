@@ -40,8 +40,7 @@ public class Preliminary{
 
   public static int partition ( int [] data, int start, int end){
   System.out.println(toString(data));
-//  int p = (int)(Math.random()*(end - start + 1)) + start;
-  int p = 4;
+  int p = (int)(Math.random()*(end - start + 1)) + start;
   int holder = data[start];
   data[start] = data[p];
   data[p] = holder;
