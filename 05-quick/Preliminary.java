@@ -38,12 +38,18 @@ public class Preliminary{
 }
 
   public static int quickselect(int []data, int k){
-    int joe = partition(data, 0, data.length-1);
+    int start = 0;
+    int end = data.length-1;
+    int joe = partition(data, start, end);
     while (k != joe){
       if (k > joe){
-        joe = partition(data, joe, data.length-1);
+        start = joe+1;
+        end = data.length-1;
+        joe = partition(data, start, end);
       } else {
-        joe = partition(data, 0, joe);
+        start = 0;
+        end = joe-1;
+        joe = partition(data, start, end);
       }
     }
     return data[k];
@@ -79,6 +85,16 @@ public class Preliminary{
     int[] ary = {2, 10, 15, 23, 0, 5};
     for (int i = 0; i < ary.length; i++){
       System.out.println(quickselect(ary, i));
+    }
+
+    int[] randish = new int[100];
+    for(int i = 0 ; i < 100; i++){
+      randish[i] =(int)(Math.random()*1000);
+    }
+    System.out.println(toString(randish));
+
+    for (int i = 0; i < randish.length; i++){
+      System.out.println(quickselect(randish, i));
     }
 
 
