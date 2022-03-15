@@ -42,15 +42,12 @@ public class Preliminary{
     int end = data.length-1;
     int joe = partition(data, start, end);
     while (k != joe){
-      if (k > joe){
-        start = joe+1;
-        end = data.length-1;
-        joe = partition(data, start, end);
+      if (k < joe){
+        end = joe - 1;
       } else {
-        start = 0;
-        end = joe-1;
-        joe = partition(data, start, end);
+        start = joe + 1;
       }
+      joe = partition(data, start, end);
     }
     return data[k];
   }
@@ -87,11 +84,11 @@ public class Preliminary{
       System.out.println(quickselect(ary, i));
     }
 
-    int[] randish = new int[100];
-    for(int i = 0 ; i < 100; i++){
-      randish[i] =(int)(Math.random()*1000);
+    int[] randish = new int[1000000];
+    for(int i = 0 ; i < 1000000; i++){
+      randish[i] =(int)(Math.random()*100000);
     }
-    System.out.println(toString(randish));
+  //  System.out.println(toString(randish));
 
     for (int i = 0; i < randish.length; i++){
       System.out.println(quickselect(randish, i));
