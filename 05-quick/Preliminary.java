@@ -1,7 +1,6 @@
 public class Preliminary{
-  public static int partition ( int [] data, int start, int end){
-//  int p = (int)(Math.random()*(end - start + 1)) + start;
-int p = 7;
+  public static int partition2 ( int [] data, int start, int end){
+  int p = (int)(Math.random()*(end - start + 1)) + start;
   System.out.println(toString(data));
     for (int i = start; i <= end; i++){
       if (i != p){
@@ -38,6 +37,35 @@ int p = 7;
     System.out.println();
     return p;
   }
+
+  public static int partition ( int [] data, int start, int end){
+  System.out.println(toString(data));
+//  int p = (int)(Math.random()*(end - start + 1)) + start;
+  int p = 4;
+  int holder = data[start];
+  data[start] = data[p];
+  data[p] = holder;
+  p = start;
+  System.out.println(toString(data));
+  System.out.println("p: " + p);
+  for (int i = start+1; i <= end; i++){
+    if (data[i] >= data[p]){
+      int holder2 = data[end];
+      data[end] = data[i];
+      data[i] = holder2;
+      i--;
+      end--;
+    } else {
+      int holder2 = data[i-1];
+      data[i-1] = data[i];
+      data[i] = holder2;
+      p++;
+    }
+    System.out.println(toString(data));
+    System.out.println("p: " + p);
+  }
+  return p;
+}
 
   public static String toString(int[] data){
     String joe = "";
