@@ -1,4 +1,4 @@
-public class Preliminary{
+public class Quick{
   public static int partition ( int [] data, int start, int end){
 //  System.out.println(toString(data));
   int p = (int)(Math.random()*(end - start + 1)) + start;
@@ -37,7 +37,7 @@ public class Preliminary{
   return p;
 }
 
-  public static int quickselect(int []data, int k){
+  public static int quickselect(int[]data, int k){
     int start = 0;
     int end = data.length-1;
     int joe = partition(data, start, end);
@@ -50,6 +50,18 @@ public class Preliminary{
       joe = partition(data, start, end);
     }
     return data[k];
+  }
+
+  public static void quicksort(int[]data){
+    quicksort(data, 0, data.length-1);
+  }
+
+  public static void quicksort(int[]data, int low, int high){
+    if (high > low && high != low){
+      int joe = partition(data, low, high);
+      quicksort(data, low, joe-1);
+      quicksort(data, joe+1, high);
+    }
   }
 
   public static String toString(int[] data){
@@ -78,7 +90,7 @@ public class Preliminary{
     int[] data7 = {0,0,0,0,0,0,0,0,0,0,0};
     System.out.println(partition(data7, 0, data7.length-1));
 
-    System.out.println("QUICKSORT TEST CASES");
+    System.out.println("QUICKSELECT TEST CASES");
     int[] ary = {2, 10, 15, 23, 0, 5};
     for (int i = 0; i < ary.length; i++){
       System.out.println(quickselect(ary, i));
@@ -90,10 +102,14 @@ public class Preliminary{
     }
   //  System.out.println(toString(randish));
 
-    for (int i = 0; i < randish.length; i++){
-      System.out.println(quickselect(randish, i));
-    }
+    // for (int i = 0; i < randish.length; i++){
+    //   System.out.println(quickselect(randish, i));
+    // }
 
+    System.out.println("QUICKSORT TEST CASES");
+    int[] data10 = {3, 5, 1, 7, 2, 9, 3, 6, 1, 1, 9, 4};
+    quicksort(data10);
+    System.out.println(toString(data10));
 
   }
 
