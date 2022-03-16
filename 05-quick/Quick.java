@@ -37,6 +37,41 @@ public class Quick{
   return p;
 }
 
+  public static int[] partitionDutch(int[] data,int start, int end){
+    int p = (int)(Math.random()*(end - start + 1)) + start;
+    int holder = data[start];
+    data[start] = data[p];
+    data[p] = holder;
+    p = start;
+    int holder3 = 1;
+
+  System.out.println(toString(data));
+  System.out.println("p: " + p);
+  int counter = 0;
+  for (int i = start+1; i <= end; i++){
+    boolean joe = data[i] > data[p];
+
+    if (data[i] == data[p]){
+      p++;
+      holder3++;
+    } else if (joe){
+      int holder2 = data[end];
+      data[end] = data[i];
+      data[i] = holder2;
+      i--;
+      end--;
+    } else {
+      int holder2 = data[i-holder3];
+      data[i-holder3] = data[i];
+      data[i] = holder2;
+      p++;
+  }
+  System.out.println(toString(data));
+  System.out.println("p: " + p);
+}
+  return data;
+}
+
   public static int quickselect(int[]data, int k){
     int start = 0;
     int end = data.length-1;
@@ -111,6 +146,10 @@ public class Quick{
     quicksort(data10);
     System.out.println(toString(data10));
 
+    System.out.println("DUTCH PARTITION TEST CASES");
+    int[] data11 = {312, 412, 51, 51, 51, 51, 16, 190, 91};
+    data11 = partitionDutch(data11, 0, data11.length-1);
+    System.out.println(toString(data11));
   }
 
 }
