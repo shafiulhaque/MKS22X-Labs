@@ -1,14 +1,12 @@
 public class Quick{
   public static int partition ( int [] data, int start, int end){
-//  System.out.println(toString(data));
+
   int p = (int)(Math.random()*(end - start + 1)) + start;
   int holder = data[start];
   data[start] = data[p];
   data[p] = holder;
   p = start;
 
-//  System.out.println(toString(data));
-//  System.out.println("p: " + p);
   int counter = 0;
   for (int i = start+1; i <= end; i++){
     boolean joe = data[i] > data[p];
@@ -31,8 +29,6 @@ public class Quick{
       p++;
     }
 
-  //  System.out.println(toString(data));
-  //  System.out.println("p: " + p);
   }
   return p;
 }
@@ -45,8 +41,6 @@ public class Quick{
     p = start;
     int holder3 = 1;
 
-  System.out.println(toString(data));
-  System.out.println("p: " + p);
   int counter = 0;
   for (int i = start+1; i <= end; i++){
     boolean joe = data[i] > data[p];
@@ -65,11 +59,10 @@ public class Quick{
       data[i-holder3] = data[i];
       data[i] = holder2;
       p++;
+    }
   }
-  System.out.println(toString(data));
-  System.out.println("p: " + p);
-}
-  return data;
+  int[] joe = {p-holder3+1, p};
+  return joe;
 }
 
   public static int quickselect(int[]data, int k){
@@ -92,6 +85,14 @@ public class Quick{
   }
 
   public static void quicksort(int[]data, int low, int high){
+    if (high > low && high != low){
+      int[] joe = partitionDutch(data, low, high);
+      quicksort(data, low, joe[0]-1);
+      quicksort(data, joe[1]+1, high);
+    }
+  }
+
+  public static void quicksort2(int[]data, int low, int high){
     if (high > low && high != low){
       int joe = partition(data, low, high);
       quicksort(data, low, joe-1);
@@ -130,13 +131,10 @@ public class Quick{
     for (int i = 0; i < ary.length; i++){
       System.out.println(quickselect(ary, i));
     }
-
     int[] randish = new int[1000000];
     for(int i = 0 ; i < 1000000; i++){
       randish[i] =(int)(Math.random()*100000);
     }
-  //  System.out.println(toString(randish));
-
     // for (int i = 0; i < randish.length; i++){
     //   System.out.println(quickselect(randish, i));
     // }
@@ -145,11 +143,23 @@ public class Quick{
     int[] data10 = {3, 5, 1, 7, 2, 9, 3, 6, 1, 1, 9, 4};
     quicksort(data10);
     System.out.println(toString(data10));
+    int[] randish2 = new int[1000000];
+    for(int i = 0; i < 1000000; i++){
+      randish2[i] =(int)(Math.random()*100000);
+    }
+    System.out.println("starting sort...");
+    quicksort(randish2);
+    // for(int i = 0; i < 1000000; i++){
+    //   System.out.println(randish2[i]);
+    // }
+    System.out.println("finished!");
 
     System.out.println("DUTCH PARTITION TEST CASES");
     int[] data11 = {312, 412, 51, 51, 51, 51, 16, 190, 91};
-    data11 = partitionDutch(data11, 0, data11.length-1);
+    int[] bruh = partitionDutch(data11, 0, data11.length-1);
     System.out.println(toString(data11));
+    System.out.println(bruh[0]);
+    System.out.println(bruh[1]);
   }
 
 }
