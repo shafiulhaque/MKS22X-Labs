@@ -100,6 +100,22 @@ public class Quick{
     }
   }
 
+  public static void insertionSort(int[]data){
+    if (data.length > 1){
+      for (int i = 1; i < data.length; i++){
+        int number = data[i];
+        int changeIndex = i;
+        if (data[i] < data[i - 1]){
+          while (changeIndex > 0 && number < data[changeIndex-1]){
+             data[changeIndex] = data[changeIndex - 1];
+             changeIndex--;
+             data[changeIndex] = number;
+          }
+        }
+      }
+    }
+  }
+
   public static String toString(int[] data){
     String joe = "";
     for (int i = 0; i < data.length-1; i++){
