@@ -1,5 +1,6 @@
 public class Merge{
   public static int[] merge(int [] left, int[] right){
+    //return a new array that is the merged version of left and right
     int counter1 = 0;
     int counter2 = 0;
     int joelen = 0;
@@ -20,20 +21,19 @@ public class Merge{
         joe[joelen] = right[i];
         joelen++;
       }
-    } else if (counter2 == right.length){
+    } else {
       for (int i = counter1; i < left.length; i++){
         joe[joelen] = left[i];
         joelen++;
       }
     }
     return joe;
-    //return a new array that is the merged version of left and right
         }
 
-        // void mergesort(data){
-        //   int [] temp  =  mergeSortH(data);
-        //   copy temp into data
-        // }
+    public static void mergesort(int[] data){
+      int[] temp = mergeSortH(data);
+      data = temp;
+    }
         //
         // int[] mergesortH(data){
         //   if more than 1 element{
