@@ -1,6 +1,11 @@
 public class Merge{
+  /*merge takes two sorted arrays and returns a new array that combines all
+         *elements of both arrays in asorted order.
+         *@left a sorted array (this is a precondition)
+         *@right a sorted array (this is a precondition)
+         *@return a sorted array that contains all elements of left and right
+  */
   public static int[] merge(int [] left, int[] right){
-    //return a new array that is the merged version of left and right
     int counter1 = 0;
     int counter2 = 0;
     int joelen = 0;
@@ -27,6 +32,11 @@ public class Merge{
     return joe;
   }
 
+  /*mergesort uses the recursive mergesortH method to create a sorted
+        *version of the array. It then copies the data back into the original
+        *array. (This is for compatibility with prior sort testers)
+        *@param data the array to be sorted, this will be modified by the method
+  */
     public static void mergesort(int[] data){
       int[] temp = mergesortH(data);
       for(int i = 0; i < data.length; i++){
@@ -34,6 +44,18 @@ public class Merge{
       }
     }
 
+  /*mergesortH is the actual mergesort method.
+        *@data the array to be sorted
+        *@return a new array that is the sorted version of data.
+  */
+  //********************
+          //COMPLETE THIS METHOD
+          //********************
+          //if more than 1 element{
+            //left = copy half of data
+            //right = copy other half of data
+            //sort each half and merge them together
+  //}
     public static int[] mergesortH(int[] data){
       if (data.length < 2){
         return data;
