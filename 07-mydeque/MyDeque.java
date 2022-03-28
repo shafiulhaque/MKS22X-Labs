@@ -18,6 +18,8 @@ public class MyDeque<E>{
         E[] d = (E[])new Object[initialCapacity];
         data = d;
         size = 0;
+        start = data.length/2;
+        end = start + 1;
       }
 
       public int size(){
@@ -32,11 +34,69 @@ public class MyDeque<E>{
         joe += data[data.length-1] + "]";
         return joe;
       }
-      
-      public void addFirst(E element){ }
-      public void addLast(E element){ }
-      public E removeFirst(){ }
-      public E removeLast(){ }
-      public E getFirst(){ }
-      public E getLast(){ }
+
+      public void addFirst(E element){
+        if (size == 0){
+          data[start] = element;
+        } else if (size == data.length){
+          resize();
+        } else if (start == 0){
+          start = data.length;
+          addFirst(element);
+        } else {
+          start--;
+          data[start] = element;
+          size++;
+        }
+      }
+
+      public void addLast(E element){
+        if (size == 0){
+          data[end] = element;
+        } else if (size == data.length){
+          resize();
+        } else if (end == data.length){
+          end = -1;
+          addLast(element);
+        } else {
+          end++;
+          data[end] = element;
+          size++;
+        }
+      }
+
+      private void resize(){
+        
+      }
+
+      public E removeFirst(){
+        E joe = data[start];
+        data[start] = null;
+        if (start == data.length-1){
+          start = 0;
+        } else {
+          start++;
+        }
+        size--;
+        return joe;
+      }
+
+      public E removeLast(){
+        E joe = data[end];
+        data[end] = null;
+        if (end == 0){
+          end = data.length - 1;
+        } else {
+          end--;
+        }
+        size--;
+        return joe;
+      }
+
+      public E getFirst(){
+        return data[start];
+      }
+      public E getLast(){
+        return data[end];
+      }
     }
