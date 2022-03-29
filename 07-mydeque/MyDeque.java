@@ -30,11 +30,11 @@ public class MyDeque<E>{
         return size;
       }
       public E getFirst(){
-        if (data[start] == null) throw new NoSuchElementException();
+        if (size == 0) throw new NoSuchElementException();
         return data[start];
       }
       public E getLast(){
-        if (data[end] == null) throw new NoSuchElementException();
+        if (size == 0) throw new NoSuchElementException();
         return data[end];
       }
       public String toStringD(){
@@ -74,11 +74,7 @@ public class MyDeque<E>{
       //adding
       public void addFirst(E element){
         if (element == null) throw new NullPointerException();
-        if (size == 0){
-          start--;
-          data[start] = element;
-          size++;
-        } else if (size == data.length){
+        if (size == data.length){
           resize();
           addFirst(element);
         } else if (start == 0){
@@ -92,11 +88,7 @@ public class MyDeque<E>{
       }
       public void addLast(E element){
         if (element == null) throw new NullPointerException();
-        if (size == 0){
-          end++;
-          data[end] = element;
-          size++;
-        } else if (size == data.length){
+        if (size == data.length){
           resize();
           addLast(element);
         } else if (end+1 == data.length){
