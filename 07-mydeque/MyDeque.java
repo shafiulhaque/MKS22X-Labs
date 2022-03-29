@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class MyDeque<E>{
       //fields
       private E[] data;
@@ -14,6 +16,7 @@ public class MyDeque<E>{
         end = start-1;
       }
       public MyDeque(int initialCapacity){
+        if (initialCapacity == 0) initialCapacity = 2;
         @SuppressWarnings("unchecked")
         E[] d = (E[])new Object[initialCapacity];
         data = d;
@@ -27,22 +30,50 @@ public class MyDeque<E>{
         return size;
       }
       public E getFirst(){
+        if (data[start] == null) throw new NoSuchElementException();
         return data[start];
       }
       public E getLast(){
+        if (data[end] == null) throw new NoSuchElementException();
         return data[end];
       }
-      public String toString(){
+      public String toStringD(){
         String joe = "[";
+        if (data.length > 0){
         for(int i = 0; i < data.length-1; i++){
           joe += data[i] + ", ";
         }
-        joe += data[data.length-1] + "]";
+        joe += data[data.length-1];
+      }
+        joe += "]";
+        joe += "\n" + "START: " + start;
+        joe += "\n" + "END: " + end;
         return joe;
+      }
+      public String toString(){
+        String joe = "[";
+        if (size != 0){
+          if (start > end){
+            for (int i = start; i < data.length; i++){
+              joe += data[i] + ", ";
+            }
+            for (int i = 0; i < end; i++){
+              joe += data[i] + ", ";
+            }
+            joe += data[end];
+          } else {
+            for (int i = start; i < end; i++){
+              joe += data[i] + ", ";
+            }
+            joe += data[end];
+          }
+        }
+        return joe + "]";
       }
 
       //adding
       public void addFirst(E element){
+        if (element == null) throw new NullPointerException();
         if (size == 0){
           start--;
           data[start] = element;
@@ -60,6 +91,7 @@ public class MyDeque<E>{
         }
       }
       public void addLast(E element){
+        if (element == null) throw new NullPointerException();
         if (size == 0){
           end++;
           data[end] = element;
@@ -94,7 +126,7 @@ public class MyDeque<E>{
           }
           start += joe;
           end += joe;
-        } else if(start > end){
+        } else {
           for(int i = 0; i <= end; i++){
             L[i] = data[i];
           }
@@ -102,20 +134,13 @@ public class MyDeque<E>{
             L[i + data.length] = data[i];
           }
           start += data.length;
-        } else {
-          for(int i = 0; i <= start; i++){
-            L[i] = data[i];
-          }
-          for(int i = end; i < data.length; i++){
-            L[i + data.length] = data[i];
-          }
-          end += data.length;
         }
         data = L;
       }
 
       //remove
       public E removeFirst(){
+        if (size == 0) throw new NoSuchElementException();
         E joe = data[start];
         data[start] = null;
         if (start == data.length-1){
@@ -127,6 +152,7 @@ public class MyDeque<E>{
         return joe;
       }
       public E removeLast(){
+        if (size == 0) throw new NoSuchElementException();
         E joe = data[end];
         data[end] = null;
         if (end == 0){
