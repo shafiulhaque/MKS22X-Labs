@@ -11,17 +11,69 @@ public class Calculator{
       *        Either "too many operands" or "too few operands for operation _" replace _ with +,- etc.
       */
       public static double eval(String s){
-        Deque<Double> bruh = new LinkedList<Double>();
-        while(s.contains(" ") && s.length() > 0){
-          String joe = s.substring(0, s.indexOf(" "));
-          if(joe != "+" && joe != "-" && joe != "/" && joe != "*" && joe != "%"){
-            bruh.addFirst(Double.parseDouble(joe));
+        Deque<Double> bruh = new ArrayDeque<Double>();
+        Scanner joe2 = new Scanner(s);
+        while (joe2.hasNext()){
+          String bruh2 = joe2.next();
+          if(bruh2.equals("+")){
+            if (hasSpace(bruh)){
+              Double joe = bruh.removeLast();
+              Double joe3 = bruh.removeLast();
+              bruh.addLast(joe+joe3);
+            } else {
+              throw new IllegalArgumentException("too few operands");
+            }
+          } else if(bruh2.equals("-")){
+            if (hasSpace(bruh)){
+              Double joe = bruh.removeLast();
+              Double joe3 = bruh.removeLast();
+              bruh.addLast(joe3-joe);
+            } else {
+              throw new IllegalArgumentException("too few operands");
+            }
+          } else if(bruh2.equals("/")){
+            if (hasSpace(bruh)){
+              Double joe = bruh.removeLast();
+              Double joe3 = bruh.removeLast();
+              bruh.addLast(joe3/joe);
+            } else {
+              throw new IllegalArgumentException("too few operands");
+            }
+          } else if(bruh2.equals("*")){
+            if (hasSpace(bruh)){
+              Double joe = bruh.removeLast();
+              Double joe3 = bruh.removeLast();
+              bruh.addLast(joe3*joe);
+            } else {
+              throw new IllegalArgumentException("too few operands");
+            }
+          } else if(bruh2.equals("%")){
+            if (hasSpace(bruh)){
+              Double joe = bruh.removeLast();
+              Double joe3 = bruh.removeLast();
+              bruh.addLast(joe3%joe);
+            } else {
+              throw new IllegalArgumentException("too few operands");
+            }
+          } else {
+            bruh.addLast(Double.parseDouble(bruh2));
           }
-          s = s.substring(s.indexOf(" "));
         }
-        return bruh.size();
+        if (bruh.size() > 1){
+          throw new IllegalArgumentException("too many operands");
+        } else {
+          return bruh.getLast();
+        }
       }
+      public static boolean hasSpace(Deque<Double> bruh){
+        return (bruh.size() >= 2);
+      }
+
       public static void main(String[] args){
+        System.out.println(eval("10 2.0 +"));
         System.out.println(eval("11 3 - 4 + 2.5 *"));
+        System.out.println(eval("8 2 + 99 9 - * 2 + 9 -"));
+        System.out.println(eval("1 2 3 4 5 + * - -"));
+        System.out.println(eval("5 9 + 2 * 6 5 * +"));
       }
     }
