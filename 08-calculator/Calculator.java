@@ -21,7 +21,7 @@ public class Calculator{
               Double joe3 = bruh.removeLast();
               bruh.addLast(joe+joe3);
             } else {
-              throw new IllegalArgumentException("too few operands");
+              throw new IllegalArgumentException("too few operands for operation " + bruh2);
             }
           } else if(bruh2.equals("-")){
             if (hasSpace(bruh)){
@@ -29,7 +29,7 @@ public class Calculator{
               Double joe3 = bruh.removeLast();
               bruh.addLast(joe3-joe);
             } else {
-              throw new IllegalArgumentException("too few operands");
+              throw new IllegalArgumentException("too few operands for operation " + bruh2);
             }
           } else if(bruh2.equals("/")){
             if (hasSpace(bruh)){
@@ -37,7 +37,7 @@ public class Calculator{
               Double joe3 = bruh.removeLast();
               bruh.addLast(joe3/joe);
             } else {
-              throw new IllegalArgumentException("too few operands");
+              throw new IllegalArgumentException("too few operands for operation " + bruh2);
             }
           } else if(bruh2.equals("*")){
             if (hasSpace(bruh)){
@@ -45,7 +45,7 @@ public class Calculator{
               Double joe3 = bruh.removeLast();
               bruh.addLast(joe3*joe);
             } else {
-              throw new IllegalArgumentException("too few operands");
+              throw new IllegalArgumentException("too few operands for operation " + bruh2);
             }
           } else if(bruh2.equals("%")){
             if (hasSpace(bruh)){
@@ -53,7 +53,7 @@ public class Calculator{
               Double joe3 = bruh.removeLast();
               bruh.addLast(joe3%joe);
             } else {
-              throw new IllegalArgumentException("too few operands");
+              throw new IllegalArgumentException("too few operands for operation " + bruh2);
             }
           } else {
             bruh.addLast(Double.parseDouble(bruh2));
@@ -61,8 +61,10 @@ public class Calculator{
         }
         if (bruh.size() > 1){
           throw new IllegalArgumentException("too many operands");
-        } else {
+        } else if (bruh.size() == 1){
           return bruh.getLast();
+        } else {
+          throw new IllegalArgumentException("too few operands");
         }
       }
       public static boolean hasSpace(Deque<Double> bruh){
@@ -75,5 +77,8 @@ public class Calculator{
         System.out.println(eval("8 2 + 99 9 - * 2 + 9 -"));
         System.out.println(eval("1 2 3 4 5 + * - -"));
         System.out.println(eval("5 9 + 2 * 6 5 * +"));
+        System.out.println(eval("18"));
+        System.out.println(eval(""));
+        System.out.println(eval("18 0 /"));
       }
     }
