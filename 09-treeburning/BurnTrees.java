@@ -37,6 +37,7 @@ public class BurnTrees{
   public void edit(int[] bruh){
     int x = bruh[0];
     int y = bruh[1];
+    map[x][y] = ASH;
     if (x > 0 && map[x-1][y] == TREE){
       map[x-1][y] = FIRE;
       int[] yo = {x-1, y};
@@ -165,7 +166,7 @@ public class BurnTrees{
     for (int i = 0; i < map.length; i++) {
       for (int c = 0; c < map[i].length; c++) {
         if(map[i][c]==0)
-          builder.append(" ");
+          builder.append(Text.color(Text.DARK)+" ");
         else if(map[i][c]==2)
           builder.append(Text.color(Text.GREEN)+"@");
         else if(map[i][c]==1)
