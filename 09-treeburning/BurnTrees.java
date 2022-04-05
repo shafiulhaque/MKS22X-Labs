@@ -1,5 +1,6 @@
 import java.util.*;
 public class BurnTrees{
+  private Queue<int[]> list;
   private int[][]map;
   private int ticks;
   private static final int TREE = 2;
@@ -15,18 +16,47 @@ public class BurnTrees{
     //YOU MUST IMPLEMENT THIS METHOD
     //(BEFORE WRITING ANY CODE READ ALL OF THE CODE AND SEE HOW IT FITS TOGETHER)
     //HINT: do not check the board for fire which is an n^2 operation
-    return false;//placeholder for compilation purposes
+    return !(list.size() > 0);
   }
-
 
   /*This is the core of the simulation. All of the logic for advancing to the next round goes here.
    *All existing fires spread new fires, and turn to ash
    *new fires should remain fire, and not spread.
    */
   public void tick(){
+    int bruh = list.size();
+    for (int i = 0; i < bruh; i++){
+      int[] yo = list.remove();
+      edit(yo);
+    }
     ticks++;//leave this here.
     //YOU MUST IMPLEMENT THE REST OF THIS METHOD
     //(BEFORE WRITING ANY CODE READ ALL OF THE CODE AND SEE HOW IT FITS TOGETHER)
+  }
+
+  public void edit(int[] bruh){
+    int x = bruh[0];
+    int y = bruh[1];
+    if (x > 0 && map[x-1][y] == TREE){
+      map[x-1][y] = FIRE;
+      int[] yo = {x-1, y};
+      list.add(yo);
+    }
+    if (y > 0 && map[x][y-1] == TREE){
+      map[x][y-1] = FIRE;
+      int[] yo = {x, y-1};
+      list.add(yo);
+    }
+    if (x < map.length-1 && map[x+1][y] == TREE){
+      map[x+1][y] = FIRE;
+      int[] yo = {x+1, y};
+      list.add(yo);
+    }
+    if (y < map[0].length-1 && map[x][y+1] == TREE){
+      map[x][y+1] = FIRE;
+      int[] yo = {x, y+1};
+      list.add(yo);
+    }
   }
 
   /***********************YOU MIGHT UPDATE THIS**************************/
@@ -37,6 +67,7 @@ public class BurnTrees{
    */
   public BurnTrees(int width,int height, double density){
     map = new int[height][width];
+    list = new LinkedList<int[]>();
     for(int r=0; r<map.length; r++ ){
       for(int c=0; c<map[r].length; c++ ){
         if(Math.random() < density){
@@ -57,6 +88,8 @@ public class BurnTrees{
     for(int i = 0; i < map.length; i++){
       if(map[i][0]==TREE){
         map[i][0]=FIRE;
+        int[] yo = {i, 0};
+        list.add(yo);
       }
     }
   }
