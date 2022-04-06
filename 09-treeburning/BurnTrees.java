@@ -128,8 +128,10 @@ public class BurnTrees{
         NO = Integer.parseInt(args[1]);
         DENSITY = Double.parseDouble(args[2]);
       }
-      double ans = averageofNRuns(NO, SIZE, DENSITY);
-      System.out.println(ans);
+      for (double i = 0; i < 1.0; i += 0.05){
+        double ans = averageofNRuns(NO, 10, i);
+        System.out.println("DENSITY: " + i + " " + ans);
+      }
     }
 
 
