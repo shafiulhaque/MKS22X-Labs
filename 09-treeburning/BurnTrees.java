@@ -119,7 +119,7 @@ public class BurnTrees{
     // }
 
     public static void main(String[] args){
-      int SIZE = 100;
+      int SIZE = 200;
       int NO = 100;
       int DELAY = 200;
       double DENSITY = .7;
@@ -128,9 +128,9 @@ public class BurnTrees{
         NO = Integer.parseInt(args[1]);
         DENSITY = Double.parseDouble(args[2]);
       }
-      for (double i = 0; i < 1.0; i += 0.05){
-        double ans = averageofNRuns(NO, 10, i);
-        System.out.println("DENSITY: " + i + " " + ans);
+      for (int i = 0; i <= 100; i += 1){
+        double ans = averageofNRuns(NO, SIZE, (double)i/100);
+        System.out.println("DENSITY: " + (double)i/100 + " " + ans);
       }
     }
 
