@@ -95,29 +95,41 @@ public class BurnTrees{
     }
   }
 
+    // public static void main(String[]args){
+    //   int WIDTH = 20;
+    //   int HEIGHT = 20;
+    //   int DELAY = 200;
+    //   double DENSITY = .7;
+    //   if(args.length > 1){
+    //     WIDTH = Integer.parseInt(args[0]);
+    //     HEIGHT = Integer.parseInt(args[1]);
+    //     DENSITY = Double.parseDouble(args[2]);
+    //   }
+    //   if(args.length > 3){
+    //     DELAY = Integer.parseInt(args[3]);
+    //   }
+    //   BurnTrees b = new BurnTrees(WIDTH,HEIGHT,DENSITY);
+    //
+    //
+    //   int ans = b.animate(DELAY);//animate all screens
+    //   System.out.println(ans);//print the final answer
+    //
+    //   // int ans = b.outputAll();//print all screens one after another
+    //   // System.out.println(ans);//print the final answer
+    // }
 
-
-    public static void main(String[]args){
-      int WIDTH = 20;
-      int HEIGHT = 20;
+    public static void main(String[] args){
+      int SIZE = 100;
+      int NO = 100;
       int DELAY = 200;
       double DENSITY = .7;
       if(args.length > 1){
-        WIDTH = Integer.parseInt(args[0]);
-        HEIGHT = Integer.parseInt(args[1]);
+        SIZE = Integer.parseInt(args[0]);
+        NO = Integer.parseInt(args[1]);
         DENSITY = Double.parseDouble(args[2]);
       }
-      if(args.length > 3){
-        DELAY = Integer.parseInt(args[3]);
-      }
-      BurnTrees b = new BurnTrees(WIDTH,HEIGHT,DENSITY);
-
-
-      int ans = b.animate(DELAY);//animate all screens
-      System.out.println(ans);//print the final answer
-
-      //int ans = b.outputAll();//print all screens one after another
-      //System.out.println(ans);//print the final answer
+      double ans = averageofNRuns(NO, SIZE, DENSITY);
+      System.out.println(ans);
     }
 
 
@@ -202,5 +214,21 @@ public class BurnTrees{
     return getTicks();
   }
 
+  public int outputAllX(){
+    while(!done()){
+      tick();
+    }
+    return getTicks();
+  }
+
+  public static double averageofNRuns(int n, int size, double density){
+    double total = 0;
+    for (int i = 0; i < n; i++){
+      BurnTrees b = new BurnTrees(size, size, density);
+      double ans = b.outputAllX();
+      total += ans;
+    }
+    return total/n;
+  }
 
 }
