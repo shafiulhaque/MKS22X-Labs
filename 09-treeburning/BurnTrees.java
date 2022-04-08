@@ -119,22 +119,19 @@ public class BurnTrees{
     // }
 
     public static void main(String[] args){
-      int SIZE = 200;
-      int NO = 100;
-      int DELAY = 200;
+      int SIZE = 500;
+      int NO = 10;
       double DENSITY = .7;
       if(args.length > 1){
         SIZE = Integer.parseInt(args[0]);
         NO = Integer.parseInt(args[1]);
         DENSITY = Double.parseDouble(args[2]);
       }
-      for (int i = 0; i <= 100; i += 1){
-        double ans = averageofNRuns(NO, SIZE, (double)i/100);
-        System.out.println("DENSITY: " + (double)i/100 + " " + ans);
+      for (int i = 0; i <= 1000; i += 1){
+        double ans = averageofNRuns(NO, SIZE, (double)i/1000);
+        System.out.println("DENSITY: " + (double)i/1000 + " " + ans);
       }
     }
-
-
 
 
   /***********************DO NOT UPDATE THINGS BELOW HERE**************************/
