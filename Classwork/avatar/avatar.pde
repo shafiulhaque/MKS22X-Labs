@@ -3,7 +3,7 @@ int y = 470;
 
 void setup(){
   size(600, 600);
-  background(0, 0, 128);
+  background(0, 0, 56);
   stroke(255, 255, 255);
   fill(0, 0, 0);
   triangle(100, 100, 100, 470, 470, 100);
@@ -13,7 +13,4 @@ void setup(){
   triangle(450, 450, 245, 450, 450, 245);
   stroke(0, 0, 0);
   quad(245, 325, 275, 355, 355, 275, 325, 245);
-}
-
-void draw(){
 }
