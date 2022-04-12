@@ -4,7 +4,7 @@ float z = random(255);
 
 void setup(){
   size(600, 600);
-  background(0, 0, 6);
+  background(0, 0, 0);
   stroke(255, 255, 255);
   fill(0, 0, 0);
   triangle(100, 100, 100, 470, 470, 100);
