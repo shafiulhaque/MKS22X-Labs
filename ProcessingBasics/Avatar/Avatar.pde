@@ -19,7 +19,7 @@ int MODE;
 
 void setup(){
          size(800,800);
-         MODE = 3;
+         MODE = 2;
          x = width/2;
          y = height/2;
 }
@@ -29,6 +29,14 @@ void draw(){
          x = change(x);
          y = change(y);
          avatar(x,y);
+}
+
+void mouseClicked(){
+  if (MODE == 3){
+    MODE = 1;
+  } else {
+    MODE += 1;
+  }
 }
 
 int change(int value){
