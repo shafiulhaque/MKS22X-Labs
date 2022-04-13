@@ -9,7 +9,7 @@
   int SQUARESIZE;
 
   void setup() {
-    size(600, 500);
+    size(500, 600);
     ROWS = 50;
     COLS = 60;
     /**question 1 *********************************
@@ -40,9 +40,9 @@
   void draw() {
     background(0);
     //frameCount tells you how many times the draw method was called.
-    if (frameCount % 100 == 0) {
+    if (frameCount % 10 == 0) {
       treeSim.tick();
-      println("Testing code:"+ frameCount);
+      //println("Testing code:"+ frameCount);
     }
     /**question 3 *********************************
      *How is the behavior going to change if you only call tick() when the frameCount % 10 == 0?
@@ -64,7 +64,7 @@
     if (treeSim.done()) {
       fill(0);
       textSize(20);
-      text("Simulation of "+COLS+"by"+ROWS+" board lasted "+treeSim.getTicks()+" ticks", 20, 20);
+      text("Simulation of "+COLS+" by "+ROWS+" board lasted "+treeSim.getTicks()+" ticks.", 20, 20);
     }
   }
 
