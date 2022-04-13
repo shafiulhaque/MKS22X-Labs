@@ -17,8 +17,10 @@
      *to alter the screen size, but you cannot just change one value!
      *What must be true about the ratio of these values in order for this simulation to display squares?
      *ANSWER HERE:
-     The ratio of these values, from the width to columns and the height to rows is always 10. In this example, the width is 600 and the COLS is 60, while the height is 500 and the ROWS is 50.
-     Both of 
+     The ratio of these values, from the width to columns and the height to rows is always 10. 
+     In this example, the width is 600 and the COLS is 60, while the height is 500 and the ROWS is 50.
+     Both of these comparisons exhibit a ratio of 10/1, or 10.
+     This would enable the simulation to show squares, as each square is 10 units long and 10 units wide.
      */
 
     DENSITY = .61;
@@ -28,8 +30,9 @@
      *How do you calculate the SQUARESIZE (size of each square you draw) using an expression?
      *ANSWER : replace squareSize = 8; with the correct square size.
      * DO NOT just write a number, it must work when you change the size() command or the ROWS and COLS
+     The square size can be calculated using the built in variables height and width which show the height/width of the screen.
      */
-    SQUARESIZE = 8;//side length
+    SQUARESIZE = height/ROWS;//side length
 
   }
 
@@ -37,8 +40,9 @@
   void draw() {
     background(0);
     //frameCount tells you how many times the draw method was called.
-    if (frameCount % 10 == 0) {
+    if (frameCount % 100 == 0) {
       treeSim.tick();
+      println("Testing code:"+ frameCount);
     }
     /**question 3 *********************************
      *How is the behavior going to change if you only call tick() when the frameCount % 10 == 0?
@@ -46,6 +50,9 @@
      *hint:  If you cannot figure this out analytically, experiment to test
      *       the difference by changing the code.
      *ANSWER HERE:
+     The behavior changes when you call tick when the frameCount%10 == 0 because it is the speed of the code.
+     Every tenth time the function draw() is called, the simulation advances one tick.
+     If we increase the mod number, then the simulation will run slower, while if we decrease the mod number, the simulation will run faster.
      */
 
     String[]lines = treeSim.toString().split("\n");
@@ -71,6 +78,13 @@
      * ANSWER: UPDATE THE NEXT LINE
      */
     treeSim = null;
+    size(600, 500);
+    ROWS = 50;
+    COLS = 60;
+    DENSITY = .61;
+    treeSim = new BurnTrees(ROWS, COLS, DENSITY);
+    SQUARESIZE = height/ROWS;
+    
   }
 
 
@@ -81,7 +95,22 @@
    *              e.g. [ "@ @@","@@@ "," @ @"] for a ROWS=3, COLS=4 board.
    *ANSWER: Complete this method.
    */
+            
   void stringToSquares(String[]lines) {
+    for (int i = 0; i < COLS; i++){
+      for (int j = 0; j < ROWS; j++){
+        if (lines[j].charAt(i) == 'w'){
+          fill(255, 0, 0);
+        } else if(lines[j].charAt(i) == '@'){
+          fill(0, 255, 0);
+        } else if (lines[j].charAt(i) == ' '){
+          fill(255, 255, 255);
+        } else {
+          fill(178, 190, 181);
+        }
+        rect(i*SQUARESIZE, j*SQUARESIZE, SQUARESIZE, SQUARESIZE);
+      }
+    }
     /**Complete this method.
      *1. Break up your screen by drawing ROWSxCOLS rectangles of the same color.
      *2. Decide how to fill them in using the String[] parameter
