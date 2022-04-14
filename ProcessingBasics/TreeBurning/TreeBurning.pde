@@ -9,7 +9,7 @@
   int SQUARESIZE;
 
   void setup() {
-    size(500, 600);
+    size(600, 500);
     ROWS = 50;
     COLS = 60;
     /**question 1 *********************************
@@ -17,7 +17,7 @@
      *to alter the screen size, but you cannot just change one value!
      *What must be true about the ratio of these values in order for this simulation to display squares?
      *ANSWER HERE:
-     The ratio of these values, from the width to columns and the height to rows is always 10. 
+     The ratio of these values, from the width to columns and the height to rows is always equal. 
      In this example, the width is 600 and the COLS is 60, while the height is 500 and the ROWS is 50.
      Both of these comparisons exhibit a ratio of 10/1, or 10.
      This would enable the simulation to show squares, as each square is 10 units long and 10 units wide.
@@ -77,13 +77,7 @@
      *Please use the same values that it was initialized with in the setup.
      * ANSWER: UPDATE THE NEXT LINE
      */
-    treeSim = null;
-    size(600, 500);
-    ROWS = 50;
-    COLS = 60;
-    DENSITY = .61;
     treeSim = new BurnTrees(ROWS, COLS, DENSITY);
-    SQUARESIZE = height/ROWS;
     
   }
 
