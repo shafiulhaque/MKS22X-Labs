@@ -1,8 +1,10 @@
 ArrayList<Orb>orbList;
+
 void setup() {
   size(1000, 700);
   orbList = new ArrayList<Orb>();
 }
+
 void mouseClicked() {
   //add a new Orb to the orbList, constructed as follows:
   //The x and y positions are the same as the mouse
@@ -15,6 +17,7 @@ void mouseClicked() {
   Orb phys = new Orb(mouseX, mouseY, xSpeed, ySpeed, radius);
   orbList.add(phys);
 }
+
 void draw() {
   background(255);
   for (Orb o : orbList) {
@@ -25,3 +28,4 @@ void draw() {
   text(frameRate, 20, 20);
   text(orbList.size(), 20, 40);
 }
+ 

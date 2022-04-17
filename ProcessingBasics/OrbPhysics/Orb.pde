@@ -10,8 +10,7 @@ public class Orb {
     xSpeed = xSpeed_;
     ySpeed = ySpeed_;
     radius = radius_;
-    //random color... why not.
-    c = color(random(255), random(255), random(255));
+    c = color(random(255), random(255), random(255)); //random color... why not.
   }
 
 
@@ -27,27 +26,30 @@ public class Orb {
   }
 
   void move() {
-    if (x - radius < 0){
+    //PART 3
+    //Change the speed when you collide with the end of the screen (all 4 sides)
+    if (x - radius < 0) {
       xSpeed = -1*(xSpeed);
+      x += 5;
     }
-    if (y - radius < 0){
+    if (y - radius < 0) {
       ySpeed = -1*(ySpeed);
+      y += 5;
     }
-    if (x + radius > width){
+    if (x + radius > width) {
       xSpeed = -1*(xSpeed);
+      x -= 5;
     }
-    if (y + radius > height){
+    if (y + radius > height) {
       ySpeed = -1*(ySpeed);
+      y -= 5;
     }
-    
+
     //PART 2
     //change the x based on the xSpeed
     //change the y based on the ySpeed
     x += xSpeed;
     y += ySpeed;
     ySpeed += .1;
-
-    //PART 3
-    //Change the speed when you collide with the end of the screen (all 4 sides)
   }
 }
