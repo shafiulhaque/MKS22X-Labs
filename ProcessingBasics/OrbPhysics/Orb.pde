@@ -52,4 +52,10 @@ public class Orb {
     y += ySpeed;
     ySpeed += .1;
   }
+  
+  void attract(Orb other){
+    float d = dist(x, y, 500, 350);
+    other.xSpeed += (x - 500)/sqrt(d);
+    other.ySpeed += (y - 350)/sqrt(d);
+  }
 }

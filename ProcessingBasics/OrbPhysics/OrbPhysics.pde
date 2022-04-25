@@ -1,8 +1,10 @@
 ArrayList<Orb>orbList;
+Orb bruh;
 
 void setup() {
   size(1000, 700);
   orbList = new ArrayList<Orb>();
+  bruh = new Orb(500, 350, 0, 0, 20);
 }
 
 void mouseClicked() {
@@ -20,6 +22,7 @@ void mouseClicked() {
 
 void draw() {
   background(255);
+  bruh.display();
   for (Orb o : orbList) {
     o.move();
     o.display();
