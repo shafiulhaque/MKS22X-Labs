@@ -15,7 +15,6 @@ void mouseClicked() {
   float radius = (float)Math.random()*50.0 + 20.0;
   float xSpeed = (float)Math.random()*6.0 - 3.0;
   float ySpeed = (float)Math.random()*6.0 - 3.0;
-
   Orb phys = new Orb(mouseX, mouseY, xSpeed, ySpeed, radius);
   orbList.add(phys);
 }
@@ -24,6 +23,7 @@ void draw() {
   background(255);
   bruh.display();
   for (Orb o : orbList) {
+    bruh.attract(o);
     o.move();
     o.display();
   }

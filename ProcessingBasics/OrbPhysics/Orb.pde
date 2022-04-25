@@ -44,7 +44,6 @@ public class Orb {
       ySpeed = -1*(ySpeed);
       y -= 5;
     }
-
     //PART 2
     //change the x based on the xSpeed
     //change the y based on the ySpeed
@@ -54,8 +53,8 @@ public class Orb {
   }
   
   void attract(Orb other){
-    float d = dist(x, y, 500, 350);
-    other.xSpeed += (x - 500)/sqrt(d);
-    other.ySpeed += (y - 350)/sqrt(d);
+    float d = dist(x, y, other.x, other.y);
+    other.xSpeed += (x - other.x)/(d);
+    other.ySpeed += (y - other.y)/(d);
   }
 }
