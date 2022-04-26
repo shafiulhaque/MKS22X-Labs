@@ -23,12 +23,14 @@ public class Orb {
     fill(c);
     stroke(255);
     ellipse(x, y, 2*radius, 2*radius);
+    stroke(0);
+    line(x, y, x + 5*xSpeed, y + 5*ySpeed);
   }
 
-  void move(int mode) {
+  void move(String mode) {
     //PART 3
     //Change the speed when you collide with the end of the screen (all 4 sides)
-    if (mode == 1){
+    if (mode.equals("GRAVITY")){
     if (x - radius < 0) {
       xSpeed = -1*(xSpeed);
       x += 5;
@@ -55,6 +57,8 @@ public class Orb {
   
   void attract(Orb other){
     float d = dist(x, y, other.x, other.y);
+    //other.xSpeed += (x - other.x)/(d);
+    //other.ySpeed += (y - other.y)/(d);
     other.xSpeed += 20 * (x - other.x)/(d*d);
     other.ySpeed += 20 * (y - other.y)/(d*d);
   }

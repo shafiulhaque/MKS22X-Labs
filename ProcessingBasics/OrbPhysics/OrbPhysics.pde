@@ -1,13 +1,13 @@
 ArrayList<Orb>orbList;
 Orb bruh;
-int mode;
+String mode;
 
 void setup() {
   size(1000, 800);
   background(255);
   orbList = new ArrayList<Orb>();
   bruh = new Orb(width/2, height/2, 0, 0, 10);
-  mode = 1;
+  mode = "GRAVITY";
 }
 
 void mouseClicked() {
@@ -28,7 +28,7 @@ void mouseClicked() {
 void draw() {
   background(255);
   bruh.display();
-  if (mode == 2){
+  if (mode.equals("ORBIT")){
   for (Orb o : orbList) {
     bruh.attract(o);
     o.move(mode);
@@ -44,18 +44,16 @@ void draw() {
   fill(0);
   text(frameRate, 20, 20);
   text(orbList.size(), 20, 40);
-  text("MODE: " + mode, 20, 60);
+  text(mode, 20, 60);
 }
 
 void keyPressed(){
   if (keyCode == BACKSPACE) orbList = new ArrayList<Orb>();
   if (keyCode == 32){
-    if (mode == 1){
-      mode = 2;
+    if (mode.equals("ORBIT")){
+      mode = "GRAVITY";
     } else {
-      mode = 1;
+      mode = "ORBIT";
     }
   }
 }
-
- 
