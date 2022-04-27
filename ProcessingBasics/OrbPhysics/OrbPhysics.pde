@@ -1,13 +1,14 @@
 ArrayList<Orb>orbList;
 Orb bruh;
 String mode;
+String back;
 
 void setup() {
   size(1000, 800);
-  background(255);
   orbList = new ArrayList<Orb>();
   bruh = new Orb(width/2, height/2, 0, 0, 10);
   mode = "GRAVITY";
+  back = "OFF";
 }
 
 void mouseClicked() {
@@ -26,7 +27,7 @@ void mouseClicked() {
 }
 
 void draw() {
-  background(255);
+  if (back.equals("ON")) background(255);
   bruh.display();
   if (mode.equals("ORBIT")){
   for (Orb o : orbList) {
@@ -56,4 +57,11 @@ void keyPressed(){
       mode = "ORBIT";
     }
   }
+  if (keyCode == 66){
+    if (back.equals("OFF")){
+      back = "ON";
+    } else {
+      back = "OFF";
+    }
+  } 
 }
