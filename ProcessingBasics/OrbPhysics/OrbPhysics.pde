@@ -35,6 +35,7 @@ void draw() {
     bruh.attract(o);
     o.move(mode);
     o.display();
+    if (gravityMode) o.ySpeed += .15;
   }
   } 
   if (mode.equals("SPRING")){
@@ -42,13 +43,14 @@ void draw() {
     bruh.attractSpring(o);
     o.move(mode);
     o.display();
+    if (gravityMode) o.ySpeed += .15;
   }
   }
   if (mode.equals("GRAVITY")){
     for (Orb o : orbList) {
-    o.ySpeed += .15;
     o.move(mode);
     o.display();
+    if (gravityMode) o.ySpeed += .15;
   }
   }
   fill(0);
