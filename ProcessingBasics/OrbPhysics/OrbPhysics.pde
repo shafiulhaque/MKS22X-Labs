@@ -3,15 +3,9 @@ Orb bruh;
 String mode;
 boolean backgroundMode;
 boolean gravityMode;
-//final int GRAVITY = 0;
-//final int ORBIT 1;
-//final int SPRING = 2;
-//final float springlength = 50;
-//final float dampen = 0.995;
-//final float constant = 0.015;
-//int MODE;
-//boolean backgroundMode;
-//boolean gravityMode;
+final float SPRING_LENGTH = 50;
+final float SPRING_DAMPEN = 0.995;
+final float SPRING_CONSTANT = 0.015;
 
 void setup() {
   size(1000, 800);
@@ -32,7 +26,9 @@ void mouseClicked() {
 }
 
 void draw() {
-  if (backgroundMode) background(255);
+  if (backgroundMode){
+    background(255);
+  }
   bruh.display();
   if (mode.equals("ORBIT")){
   for (Orb o : orbList) {
@@ -40,7 +36,15 @@ void draw() {
     o.move(mode);
     o.display();
   }
-  } else {
+  } 
+  if (mode.equals("SPRING")){
+  for (Orb o : orbList) {
+    bruh.attractSpring(o);
+    o.move(mode);
+    o.display();
+  }
+  }
+  if (mode.equals("GRAVITY")){
     for (Orb o : orbList) {
     o.ySpeed += .15;
     o.move(mode);

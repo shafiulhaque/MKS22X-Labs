@@ -30,7 +30,7 @@ public class Orb {
   void move(String mode) {
     //PART 3
     //Change the speed when you collide with the end of the screen (all 4 sides)
-    if (mode.equals("GRAVITY")){
+    if (gravityMode){
     if (x - radius < 0) {
       xSpeed = -1*(xSpeed);
       x += 5;
@@ -57,9 +57,14 @@ public class Orb {
   
   void attract(Orb other){
     float d = dist(x, y, other.x, other.y);
-    //other.xSpeed += (x - other.x)/(d);
-    //other.ySpeed += (y - other.y)/(d);
     other.xSpeed += 20 * (x - other.x)/(d*d);
     other.ySpeed += 20 * (y - other.y)/(d*d);
+  }
+  void attractSpring(Orb other){
+    float d = dist(x, y, other.x, other.y);
+    other.xSpeed += (d - SPRING_LENGTH)*(SPRING_CONSTANT)*(x-other.x)/d;
+    other.ySpeed += (d - SPRING_LENGTH)*(SPRING_CONSTANT)*(y-other.y)/d;
+    other.xSpeed *= SPRING_DAMPEN;
+    other.ySpeed *= SPRING_DAMPEN;
   }
 }
