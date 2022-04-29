@@ -33,7 +33,7 @@ void draw() {
   if (mode.equals("ORBIT")){
   for (Orb o : orbList) {
     bruh.attract(o);
-    o.move(mode);
+    o.move();
     o.display();
     if (gravityMode) o.ySpeed += .15;
   }
@@ -41,22 +41,26 @@ void draw() {
   if (mode.equals("SPRING")){
   for (Orb o : orbList) {
     bruh.attractSpring(o);
-    o.move(mode);
+    o.move();
     o.display();
     if (gravityMode) o.ySpeed += .15;
   }
   }
   if (mode.equals("GRAVITY")){
     for (Orb o : orbList) {
-    o.move(mode);
+    o.move();
     o.display();
     if (gravityMode) o.ySpeed += .15;
   }
   }
+  fill(255);
+  stroke(255);
+  rect(0, 0, 150, 100);
   fill(0);
-  text(frameRate, 20, 20);
-  text(orbList.size(), 20, 40);
-  text(mode, 20, 60);
+  text("Balls: " + orbList.size(), 20, 20);
+  text(mode, 20, 40);
+  text("Background On: " + backgroundMode, 20, 60);
+  text("Gravity On: " + gravityMode, 20, 80);
 }
 
 void keyPressed(){
