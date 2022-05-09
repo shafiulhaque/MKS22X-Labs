@@ -4,11 +4,13 @@ public class OrbNode {
   float radius;
   color c;
   OrbNode next, prev;
+
   public OrbNode() {
   }
   public OrbNode(float x_, float y_) {
     this(x_, y_, 0.0, 0.0, 50.0);
   }
+
   public OrbNode(float x_, float y_, float dx_, float dy_, float radius_ ) {
     x = x_;
     y = y_;
@@ -17,12 +19,19 @@ public class OrbNode {
     radius = radius_;
     c = color(random(255), random(255), random(255), 200);
   }
+  
   /**
    *complete this method
    */
   void display() {
     fill(c);
     ellipse(x, y, radius*2, radius*2);
+    if (next != null){
+      line(x, y, next.x, next.y);
+    }
+    if (prev != null){
+      line(x, y, prev.x, prev.y);
+    }
     //If next or previous exist, draw lines to them! (aim for slightly off center)
     /*you write this part*/
   }
