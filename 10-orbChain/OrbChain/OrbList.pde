@@ -14,25 +14,23 @@ public class OrbList {
     orb.next = last;
     orb.prev.next = orb;
     last.prev = orb;
-    if (first.next == last) {
-      first.next = orb;
-    }
   }
 
-  /**
-   *complete this method
-   *process all nodes by running move.
-   */
   void processAll() {
     OrbNode current = first;
-    //advance current to next until it is null, move() each of the nodes
+    while (current.next != null) {
+      current.move();
+      current = current.next;
+    }
+    current.move();
   }
-  /**
-   *complete this method
-   *Display all nodes by running their display().
-   */
+
   void display() {
     OrbNode current = first;
-    //advance current to next until it is null, display() each of the nodes
+    while (current.next != null) {
+      current.display();
+      current = current.next;
+    }
+    current.display();
   }
 }
