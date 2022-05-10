@@ -2,6 +2,7 @@ static int SPRING = 2;
 static float SPRING_LENGTH = 50;
 static float SPRING_DAMPEN = 0.990;
 static float SPRING_CONSTANT = 0.015;
+static float GRAVITY = 0.015;
 static int MODE = SPRING;
 OrbList orbs;
 
@@ -30,10 +31,12 @@ void mouseClicked() {
   if (key == '6'){
     SPRING_LENGTH -= 0.5;
   }
-  //if (key == '7'){
-  //}
-  //if (key == '8'){
-  //}
+  if (key == '7'){
+    GRAVITY += .01;
+  }
+  if (key == '8'){
+    GRAVITY -= .01;
+  }
 }
 
 void draw() {
