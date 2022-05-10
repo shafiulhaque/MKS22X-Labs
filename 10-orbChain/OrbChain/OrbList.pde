@@ -1,20 +1,22 @@
 public class OrbList {
   OrbNode first, last;
 
-  //create a fixed orb
+  //FIXED ORB
   OrbList() {
     first = new FixedOrbNode(0, height/5);
     last = new FixedOrbNode(width, height/5);
-    //link them to eachother
     first.next = last;
     last.prev = first;
   }
 
-  /**
-   *complete this method
-   */
   void add(OrbNode orb) {
-    //insert orb at the end of the list before the last node.
+    orb.prev = last.prev;
+    orb.next = last;
+    orb.prev.next = orb;
+    last.prev = orb;
+    if (first.next == last) {
+      first.next = orb;
+    }
   }
 
   /**
