@@ -7,6 +7,7 @@ public class OrbNode {
 
   public OrbNode() {
   }
+  
   public OrbNode(float x_, float y_) {
     this(x_, y_, 0.0, 0.0, 50.0);
   }
@@ -20,9 +21,6 @@ public class OrbNode {
     c = color(random(255), random(255), random(255), 200);
   }
   
-  /**
-   *complete this method
-   */
   void display() {
     fill(c);
     ellipse(x, y, radius*2, radius*2);
@@ -32,8 +30,6 @@ public class OrbNode {
     if (prev != null){
       line(x, y, prev.x, prev.y);
     }
-    //If next or previous exist, draw lines to them! (aim for slightly off center)
-    /*you write this part*/
   }
 
   void springAttract(OrbNode other) {
@@ -47,33 +43,32 @@ public class OrbNode {
     other.dy*= SPRING_DAMPEN;
   }
 
-  /**
-   *complete this method
-   */
   void move() {
-    //have prev and next apply spring force to this node;
-    /*you write this part*/
     if (next != null){
       next.springAttract(this);
     }
     if (prev != null){
       prev.springAttract(this);
     }
-    //apply velocity to position
+    //VELOCITY
     x+=dx;
     y+=dy;
-    //apply gravity
+    //GRAVITY
     dy+=0.35;
   }
 }
 
 public class FixedOrbNode extends OrbNode {
+  
   void move() {
+    //EMPTY
   }
+  
   FixedOrbNode(float x_, float y_) {
     x = x_;
     y = y_;
     radius = 30;
     c = color(0);
   }
+  
 }
