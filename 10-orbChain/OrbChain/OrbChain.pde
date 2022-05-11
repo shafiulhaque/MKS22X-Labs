@@ -16,29 +16,39 @@ void mouseClicked() {
 }
 
 void keyPressed() {
-   if (key == '1'){
+  if (key == '1') {
     SPRING_CONSTANT += 0.005;
   }
-  if (key == '2'){
-    SPRING_CONSTANT -= 0.005;
+  if (key == '2') {
+    if (SPRING_CONSTANT - 0.005 >= 0) {
+      SPRING_CONSTANT -= 0.005;
+    }
   }
-  if (key == '3'){
-    SPRING_DAMPEN += 0.005;
+  if (key == '3') {
+    if (SPRING_DAMPEN + 0.005 <= 1.0) {
+      SPRING_DAMPEN += 0.005;
+    }
   }
-  if (key == '4'){
-    SPRING_DAMPEN -= 0.005;
+  if (key == '4') {
+    if (SPRING_DAMPEN - 0.005 >= 0) {
+      SPRING_DAMPEN -= 0.005;
+    }
   }
-  if (key == '5'){
+  if (key == '5') {
     SPRING_LENGTH += 0.5;
   }
-  if (key == '6'){
-    SPRING_LENGTH -= 0.5;
+  if (key == '6') {
+    if (SPRING_LENGTH - 0.5 >= 0) {
+      SPRING_LENGTH -= 0.5;
+    }
   }
-  if (key == '7'){
-    GRAVITY += 0.005;
+  if (key == '7') {
+    GRAVITY += 0.01;
   }
-  if (key == '8'){
-    GRAVITY -= 0.005;
+  if (key == '8') {
+    if (GRAVITY - 0.005 >= 0) {
+      GRAVITY -= 0.01;
+    }
   }
 }
 
