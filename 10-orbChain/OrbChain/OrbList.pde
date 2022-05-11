@@ -18,12 +18,12 @@ public class OrbList {
   
   void add(int xcor, OrbNode toBeAdded){
     OrbNode current = first;
-    while (current.next != null && xcor < current.x){
+    while (current.next != null && xcor > current.x){
       current = current.next;
     }
     current.prev.next = toBeAdded;
-    current.prev = toBeAdded;
     toBeAdded.prev = current.prev;
+    current.prev = toBeAdded;
     toBeAdded.next = current;
   }
 

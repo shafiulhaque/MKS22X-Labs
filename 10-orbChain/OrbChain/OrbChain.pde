@@ -13,12 +13,13 @@ void setup() {
 }
 
 void mouseClicked() {
-  if (CLICK_MODE == 0){
-  orbs.add(new OrbNode(mouseX, mouseY, 0, 0, 30));
+  if (CLICK_MODE == 0) {
+    orbs.add(new OrbNode(mouseX, mouseY, 0, 0, 30));
   }
-  if (CLICK_MODE == 1){
+  if (CLICK_MODE == 1) {
+    orbs.add(mouseX, new OrbNode(mouseX, mouseY, 0, 0, 30));
   }
-  if (CLICK_MODE == 2){
+  if (CLICK_MODE == 2) {
   }
 }
 
@@ -57,12 +58,20 @@ void keyPressed() {
       GRAVITY -= 0.01;
     }
   }
+  if (keyCode == 32){
+    if (CLICK_MODE < 2){
+      CLICK_MODE++;
+    } else {
+      CLICK_MODE = 0;
+    }
+  }
 }
 
 void draw() {
   background(255);
   orbs.processAll();
   orbs.display();
+  text("Click Mode: " + CLICK_MODE, 20, 20);
   text("Spring Length: " + SPRING_LENGTH, 20, 40);
   text("Spring Dampen: " + SPRING_DAMPEN, 20, 60);
   text("Spring Constant: " + SPRING_CONSTANT, 20, 80);
