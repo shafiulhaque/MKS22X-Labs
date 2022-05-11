@@ -5,6 +5,7 @@ static float SPRING_CONSTANT = 0.015;
 static float GRAVITY = 0.35;
 static int MODE = SPRING;
 OrbList orbs;
+static int CLICK_MODE = 0;
 
 void setup() {
   size(1000, 800);
@@ -12,7 +13,13 @@ void setup() {
 }
 
 void mouseClicked() {
+  if (CLICK_MODE == 0){
   orbs.add(new OrbNode(mouseX, mouseY, 0, 0, 30));
+  }
+  if (CLICK_MODE == 1){
+  }
+  if (CLICK_MODE == 2){
+  }
 }
 
 void keyPressed() {
