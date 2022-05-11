@@ -13,7 +13,10 @@ void setup() {
 
 void mouseClicked() {
   orbs.add(new OrbNode(mouseX, mouseY, 0, 0, 30));
-  if (key == '1'){
+}
+
+void keyPressed() {
+   if (key == '1'){
     SPRING_CONSTANT += 0.005;
   }
   if (key == '2'){
