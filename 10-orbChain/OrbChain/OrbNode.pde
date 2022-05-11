@@ -54,7 +54,7 @@ public class OrbNode {
     x+=dx;
     y+=dy;
     //GRAVITY
-    dy+=0.35;
+    dy+=GRAVITY;
   }
 }
 
