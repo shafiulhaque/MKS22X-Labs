@@ -26,6 +26,12 @@ public class OrbList {
     current.prev = toBeAdded;
     toBeAdded.next = current;
   }
+  
+  void delete(OrbNode target){
+  }
+  
+  OrbNode getNodeAt(int x, int y){
+  }
 
   void processAll() {
     OrbNode current = first;
