@@ -20,7 +20,7 @@ void mouseClicked() {
     orbs.add(mouseX, new OrbNode(mouseX, mouseY, 0, 0, 30));
   }
   if (CLICK_MODE == 2) {
-    orbs.delete(orbs.getNodeAt(mouseX, mouseY);
+    orbs.delete(orbs.getNodeAt(mouseX, mouseY));
   }
 }
 
@@ -59,8 +59,8 @@ void keyPressed() {
       GRAVITY -= 0.01;
     }
   }
-  if (keyCode == 32){
-    if (CLICK_MODE < 2){
+  if (keyCode == 32) {
+    if (CLICK_MODE < 2) {
       CLICK_MODE++;
     } else {
       CLICK_MODE = 0;
