@@ -5,6 +5,12 @@ public class Kernel {
    *This implementation only allows 3x3 kernels
    */
   public Kernel(float[][]init) {
+    kernel = new float[init.length][];
+    for(int i = 0; i < init.length; i++){
+      for(int j = 0; j < init[i].length; j++){
+        kernel[i][j] = init[i][j];
+      }
+    }
   }
 
   /**If part of the kernel is off of the image, return black, Otherwise
