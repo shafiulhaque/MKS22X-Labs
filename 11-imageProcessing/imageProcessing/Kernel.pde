@@ -21,7 +21,11 @@ public class Kernel {
   color calcNewColor(PImage img, int x, int y) {
     //Hint: start by always returning black.
     //This will let you test your apply method right away!
-    return 0;
+    if (x == img.width - 1 || x == 0 || y == img.height - 1 || y == 0){
+      return 0;
+    } else {
+      return 0;
+    }
   }
 
   /**You must write this method that applies the kernel to the source,
