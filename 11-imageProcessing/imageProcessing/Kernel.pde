@@ -5,9 +5,9 @@ public class Kernel {
    *This implementation only allows 3x3 kernels
    */
   public Kernel(float[][]init) {
-    kernel = new float[init.length][];
-    for(int i = 0; i < init.length; i++){
-      for(int j = 0; j < init[i].length; j++){
+    kernel = new float[init.length][init[0].length];
+    for (int i = 0; i < init.length; i++) {
+      for (int j = 0; j < init[i].length; j++) {
         kernel[i][j] = init[i][j];
       }
     }
@@ -28,6 +28,11 @@ public class Kernel {
    *and saves the data to the destination.*/
   void apply(PImage source, PImage destination) {
     source.loadPixels();
-    
+    for (int i = 0; i < source.width; i++) {
+      for (int j = 0; j < source.height; j++) {
+        color col = calcNewColor(source, i, j);
+        destination.set(i, j, col);
+      }
+    }
   }
 }
