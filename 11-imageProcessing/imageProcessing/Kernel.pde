@@ -19,13 +19,23 @@ public class Kernel {
    *     0-255, then clamp it to that range (< 0 becomes 0, >255 becomes 255)
    */
   color calcNewColor(PImage img, int x, int y) {
-    //Hint: start by always returning black.
-    //This will let you test your apply method right away!
-    if (x == img.width - 1 || x == 0 || y == img.height - 1 || y == 0){
+    float red = 0;
+    float green = 0;
+    float blue = 0;
+    img.loadPixels();
+    if (x == img.width - 1 || x == 0 || y == img.height - 1 || y == 0) {
       return 0;
     } else {
-      return 0;
+      for (int i = x - 1; i <= x + 1; i++) {
+        for (int j = y - 1; j <= y + 1; j++) {
+          color z = img.get(i, j);
+          red += red(z) * kernel[i - (x - 1)][j - (y - 1)];
+          green += green(z) * kernel[i - (x - 1)][j - (y - 1)];
+          blue += blue(z) * kernel[i - (x - 1)][j - (y - 1)];
+        }
+      }
     }
+    return color(red, green, blue);
   }
 
   /**You must write this method that applies the kernel to the source,
