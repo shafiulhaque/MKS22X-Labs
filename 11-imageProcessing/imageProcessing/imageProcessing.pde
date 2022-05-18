@@ -1,3 +1,4 @@
+int counter;
 String[] names = new String[]{
   "Identity", "Blur", "Sharpen", 
   "Outline", "Left Sobel", "Right Sobel", 
@@ -41,6 +42,7 @@ Kernel[] kernels = new Kernel[] {
 
 void setup() {
   size(1450, 500);
+  counter = 0;
   PImage car = loadImage("redcar.png");
   PImage output = car.copy();
   Kernel k = new Kernel( new float[][] {
@@ -56,4 +58,11 @@ void setup() {
   k.apply(car, output);
   image(car, 0, 0);
   image(output, car.width, 0);
+}
+
+void MouseClicked(){
+  counter++;
+  if (counter == 8){
+    counter = 0;
+  }
 }
