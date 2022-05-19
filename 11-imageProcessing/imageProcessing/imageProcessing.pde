@@ -51,6 +51,7 @@ void draw() {
   kernels[counter].apply(car, output);
   image(car, 0, 0);
   image(output, car.width, 0);
+  text("Kernel: " + names[counter], 10, 490);
 }
 
 void keyPressed() {
