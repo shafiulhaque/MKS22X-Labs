@@ -53,9 +53,11 @@ void draw() {
   image(output, car.width, 0);
 }
 
-void mouseClicked() {
-  counter++;
-  if (counter == 8) {
-    counter = 0;
+void keyPressed() {
+  if (key == ' ') {
+    counter++;
+    if (counter == 8) {
+      counter = 0;
+    }
   }
 }
